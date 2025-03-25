@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en"> 
+ <head> 
+  <meta charset="UTF-8"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <title>Jeepney 1 Data</title> 
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js"></script> 
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js"></script> 
+ </head> 
+ <body> 
+  <h1>Jeepney 1 Data</h1> 
+  <p>Latitude: <span id="lat">15.12345</span></p> 
+  <p>Longitude: <span id="lng">120.54321</span></p> 
+  <script>
+        
+        // 🔹 Firebase Configuration (Replace with your own Firebase credentials)
+        const firebaseConfig = {
+            apiKey: "AIzaSyC7Y0vwDCa4j-PFSBMO4LMP3iBTE97D5sU",
+            authDomain: "jeepneytracking1.firebaseapp.com",
+            databaseURL: "https://jeepneytracking1-default-rtdb.asia-southeast1.firebasedatabase.app",
+            projectId: "jeepneytracking1",
+            storageBucket: "jeepneytracking1.firebasestorage.app",
+            messagingSenderId: "999853984026",
+            appId: "1:999853984026:web:0cc9596c18f27b5fd744a3",
+            measurementId: "G-LWM8JJH3KW"
+  };
+
+        // 🔹 Initialize Firebase
+       
+        const database = firebase.database();
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+        
+        
+        
+        
+
+        // 🔹 Define static coordinates (Replace with real GPS data later)
+        const jeepneyData = {
+            latitude: 15.12345,
+            longitude: 120.54321
+        };
+
+        // 🔹 Update Firebase with the jeepney's location
+        database.ref("jeepneys/Jeepney1").set(jeepneyData);
+    </script> 
+ 
+</body></html>
