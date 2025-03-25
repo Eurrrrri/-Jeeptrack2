@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en"> 
+ <head> 
+  <meta charset="UTF-8"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <title>Jeepney Monitoring System</title> 
+  <style>
+        #map {
+            height: 500px;
+            width: 100%;
+        }
+    </style> 
+ </head> 
+ <body> 
+  <h2>Jeepney Monitoring System</h2> 
+  <div id="map"></div> 
+  <p id="status">Waiting for location updates...</p> <!-- Firebase and Google Maps Integration --> 
+  <script type="module">
+        // Import Firebase modules
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
+        import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js";
+
+        // Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyC7Y0vwDCa4j-PFSBMO4LMP3iBTE97D5sU",
+            authDomain: "jeepneytracking1.firebaseapp.com",
+            databaseURL: "https://jeepneytracking1-default-rtdb.asia-southeast1.firebasedatabase.app",
+            projectId: "jeepneytracking1",
+            storageBucket: "jeepneytracking1.firebasestorage.app",
+            messagingSenderId: "999853984026",
+            appId: "1:999853984026:web:0cc9596c18f27b5fd744a3",
+            measurementId: "G-LWM8JJH3KW"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const database = getDatabase(app);
+        const locationRef = ref(database, "jeepney1"); // Reference for Jeepney 1 location
+
+        let map, marker;
+
+        // Initialize Google Map
+        function initMap() {
+            map = new google.maps.Map(document.getElementById("map"), {
+                zoom: 15,
+                center: { lat: 14.5995, lng: 120.9842 } // Default center (Manila)
+            });
+
+            marker = new google.maps.Marker({
+                position: { lat: 14.5995, lng: 120.9842 },
+                map: map,
+                title: "Jeepney 1"
+            });
+
+            // Listen for location updates from Firebase
+            onValue(locationRef, (snapshot) => {
+                const data = snapshot.val();
+                if (data) {
+                    const position = { lat: data.latitude, lng: data.longitude };
+                    marker.setPosition(position);
+                    map.setCenter(position);
+                    document.getElementById("status").innerText = `Last updated location: Latitude ${data.latitude}, Longitude ${data.longitude}`;
+                } else {
+                    document.getElementById("status").innerText = "No location data available.";
+                }
+            });
+        }
+    </script> <!-- Load Google Maps API --> 
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDjEkI9duxMBLHWzrZeAmkWP8IlQCyLPmE&amp;callback=initMap"></script> 
+ 
+</body></html>
