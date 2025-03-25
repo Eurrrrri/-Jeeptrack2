@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en"> 
+ <head> 
+  <meta charset="UTF-8"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <title>Jeepney Monitoring System</title> 
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js"></script> 
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js"></script> 
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC7Y0vwDCa4j-PFSBMO4LMP3iBTE97D5sU&amp;callback=initMap" async defer></script> 
+  <style>
+        #map { height: 500px; width: 100%; }
+    </style> 
+ </head> 
+ <body> 
+  <h1>Jeepney Monitoring System</h1> 
+  <div id="map"></div> 
+  <script>
+        // 🔹 Firebase Configuration (Replace with your own Firebase credentials)
+        const firebaseConfig = {
+            apiKey: "AIzaSyC7Y0vwDCa4j-PFSBMO4LMP3iBTE97D5sU",
+            authDomain: "jeepneytracking1.firebaseapp.com",
+            databaseURL: "https://jeepneytracking1-default-rtdb.asia-southeast1.firebasedatabase.app",
+            projectId: "jeepneytracking1",
+            storageBucket: "jeepneytracking1.firebasestorage.app",
+            messagingSenderId: "999853984026",
+            appId: "1:999853984026:web:0cc9596c18f27b5fd744a3",
+            measurementId: "G-LWM8JJH3KW"
+  };
+
+        // 🔹 Initialize Firebase
+       
+        const database = firebase.database();
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+
+        let map;
+        let markers = {}; // Stores markers for each jeepney
+
+        // 🔹 Initialize Google Map
+        function initMap() {
+            map = new google.maps.Map(document.getElementById("map"), {
+                center: { lat: 15.0, lng: 120.0 }, // Default center (Philippines)
+                zoom: 12
+            });
+
+            fetchJeepneyLocations();
+        }
+
+        // 🔹 Fetch jeepney locations from Firebase
+        function fetchJeepneyLocations() {
+            const jeepneysRef = database.ref("jeepneys");
+            
+            jeepneysRef.on("value", (snapshot) => {
+                const jeepneys = snapshot.val();
+                
+                for (const id in jeepneys) {
+                    const { latitude, longitude } = jeepneys[id];
+
+                    if (markers[id]) {
+                        markers[id].setPosition(new google.maps.LatLng(latitude, longitude));
+                    } else {
+                        markers[id] = new google.maps.Marker({
+                            position: { lat: latitude, lng: longitude },
+                            map: map,
+                            title: `Jeepney ${id}`
+                        });
+                    }
+                }
+            });
+        }
+    </script> 
+ 
+</body></html>
