@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en"> 
+ <head> 
+  <meta charset="UTF-8"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <title>Jeepney GPS Tracker</title> 
+  <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
+        import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js";
+
+        // Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyC7Y0vwDCa4j-PFSBMO4LMP3iBTE97D5sU",
+            authDomain: "jeepneytracking1.firebaseapp.com",
+            databaseURL: "https://jeepneytracking1-default-rtdb.asia-southeast1.firebasedatabase.app",
+            projectId: "jeepneytracking1",
+            storageBucket: "jeepneytracking1.firebasestorage.app",
+            messagingSenderId: "999853984026",
+            appId: "1:999853984026:web:0cc9596c18f27b5fd744a3",
+            measurementId: "G-LWM8JJH3KW"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const database = getDatabase(app);
+
+        // Function to update GPS location
+        function updateLocation(position) {
+            const latitude = position.coords.latitude;
+            const longitude = position.coords.longitude;
+
+            // Save location data to Firebase
+            set(ref(database, "jeepney1"), {
+                latitude: latitude,
+                longitude: longitude
+            });
+
+            document.getElementById("location").innerText = `Latitude: ${latitude}, Longitude: ${longitude}`;
+        }
+
+        // Function to handle errors
+        function errorHandler(error) {
+            console.log("Error getting location: ", error);
+        }
+
+        // Get GPS location every 5 seconds
+        function startTracking() {
+            if (navigator.geolocation) {
+                navigator.geolocation.watchPosition(updateLocation, errorHandler, { enableHighAccuracy: true });
+            } else {
+                alert("Geolocation is not supported by your browser.");
+            }
+        }
+
+        window.onload = startTracking;
+    </script> 
+ </head> 
+ <body> 
+  <h2>Jeepney GPS Tracker</h2> 
+  <p id="location">Getting location...</p> 
+ 
+</body></html>
