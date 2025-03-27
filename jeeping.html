@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Maps - Multiple Jeepneys</title>
+    <style>
+        #map { height: 500px; width: 100%; }
+    </style>
+</head>
+<body>
+    <h2>Jeepney Locations on Google Maps</h2>
+    <div id="map"></div>
+
+    <h1>Jeepney Location Data</h1>
+    <p><strong>Jeepney 1 Latitude:</strong> <span id="lat-jeepney1">Loading...</span></p>
+    <p><strong>Jeepney 1 Longitude:</strong> <span id="lng-jeepney1">Loading...</span></p>
+    
+    <p><strong>Jeepney 2 Latitude:</strong> <span id="lat-jeepney2">Loading...</span></p>
+    <p><strong>Jeepney 2 Longitude:</strong> <span id="lng-jeepney2">Loading...</span></p>
+    
+    <p><strong>Jeepney 3 Latitude:</strong> <span id="lat-jeepney3">Loading...</span></p>
+    <p><strong>Jeepney 3 Longitude:</strong> <span id="lng-jeepney3">Loading...</span></p>
+
+    <!-- Google Maps API (Use async defer for performance) -->
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDjEkI9duxMBLHWzrZeAmkWP8IlQCyLPmE&amp;callback=initMap"></script>
+
+    <!-- Firebase Integration -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
+        import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js";
+
+        // 🔹 Firebase Config (Use your own)
+        const firebaseConfig = {
+            apiKey: "YOUR_FIREBASE_API_KEY",
+            authDomain: "jeepneytracking1.firebaseapp.com",
+            databaseURL: "https://jeepneytracking1-default-rtdb.asia-southeast1.firebasedatabase.app",
+            projectId: "jeepneytracking1",
+            storageBucket: "jeepneytracking1.firebasestorage.app",
+            messagingSenderId: "999853984026",
+            appId: "1:999853984026:web:0cc9596c18f27b5fd744a3",
+            measurementId: "G-LWM8JJH3KW"
+        };
+
+        // 🔹 Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const database = getDatabase(app);
+
+        // 🔹 References for each jeepney
+        const jeepneysRef = {
+            "jeepney1": ref(database, "jeepneys/jeepney1"),
+            "jeepney2": ref(database, "jeepneys/jeepney2"),
+            "jeepney3": ref(database, "jeepneys/jeepney3")
+        };
+
+        // 🔹 Update UI & Markers on Firebase Change
+        function updateJeepneyData(jeepneyKey, data) {
+            if (data) {
+                document.getElementById(`lat-${jeepneyKey}`).textContent = data.latitude || "No data";
+                document.getElementById(`lng-${jeepneyKey}`).textContent = data.longitude || "No data";
+
+                if (window.markers[jeepneyKey]) {
+                    window.markers[jeepneyKey].setPosition(new google.maps.LatLng(data.latitude, data.longitude));
+                }
+            } else {
+                console.error(`No valid data for ${jeepneyKey}`);
+            }
+        }
+
+        // 🔹 Listen for Firebase Updates
+        for (const key in jeepneysRef) {
+            onValue(jeepneysRef[key], (snapshot) => updateJeepneyData(key, snapshot.val()));
+        }
+    </script>
+
+    <script>
+        let map;
+        window.markers = {}; // Store jeepney markers
+
+        function initMap() {
+            map = new google.maps.Map(document.getElementById("map"), {
+                zoom: 12,
+                center: { lat: 15.179446, lng: 120.04668 } // Centered in your region
+            });
+
+            // Create standard markers
+            window.markers = {
+                "jeepney1": new google.maps.Marker({
+                    position: { lat: 15.179446, lng: 120.04668 },
+                    map: map,
+                    title: "Jeepney 1"
+                }),
+                "jeepney2": new google.maps.Marker({
+                    position: { lat: 15.1805, lng: 120.0446 },
+                    map: map,
+                    title: "Jeepney 2"
+                }),
+                "jeepney3": new google.maps.Marker({
+                    position: { lat: 15.15888, lng: 120.0554 },
+                    map: map,
+                    title: "Jeepney 3"
+                })
+            };
+        }
+    </script>
+
+</body></html>
