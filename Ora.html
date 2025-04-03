@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en"> 
+ <head> 
+  <meta charset="UTF-8"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <title>Jeepney GPS Tracker</title> 
+ </head> 
+ <body> 
+  <h1>Mobile GPS Tracker</h1> 
+  <p><strong>Latitude:</strong> <span id="latitude">Loading...</span></p> 
+  <p><strong>Longitude:</strong> <span id="longitude">Loading...</span></p> 
+  <p><strong>Status:</strong> <span id="status">Waiting for GPS...</span></p> 
+  <script type="module">
+        // Import Firebase Modules
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
+        import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js";
+
+        // 🔹 Your Firebase Configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyC7Y0vwDCa4j-PFSBMO4LMP3iBTE97D5sU",
+            authDomain: "jeepneytracking1.firebaseapp.com",
+            databaseURL: "https://jeepneytracking1-default-rtdb.asia-southeast1.firebasedatabase.app",
+            projectId: "jeepneytracking1",
+            storageBucket: "jeepneytracking1.firebasestorage.app",
+            messagingSenderId: "999853984026",
+            appId: "1:999853984026:web:0cc9596c18f27b5fd744a3",
+            measurementId: "G-LWM8JJH3KW"
+        };
+
+        // 🔹 Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const database = getDatabase(app);
+
+        // 🔹 Jeepney ID (Change this for different jeepneys)
+        const jeepneyID = "jeepney6";  // Change this to "jeepney2", "jeepney3", etc.
+        const locationRef = ref(database, `jeepneys/${jeepneyID}`);
+
+        // 🔹 Function to Update GPS Location
+        function updateLocation(position) {
+            const lat = position.coords.latitude;
+            const lng = position.coords.longitude;
+
+            // Update Firebase
+            set(locationRef, { latitude: lat, longitude: lng })
+                .then(() => {
+                    console.log("Location updated:", lat, lng);
+                    document.getElementById("status").textContent = "Location updated!";
+                })
+                .catch(error => {
+                    console.error("Error updating location:", error);
+                    document.getElementById("status").textContent = "Error updating location!";
+                });
+
+            // Update UI
+            document.getElementById("latitude").textContent = lat;
+            document.getElementById("longitude").textContent = lng;
+        }
+
+        // 🔹 Handle Errors
+        function handleError(error) {
+            console.error("GPS Error:", error.message);
+            document.getElementById("status").textContent = "Error getting location!";
+        }
+
+        // 🔹 Start Tracking Location
+        if ("geolocation" in navigator) {
+            navigator.geolocation.watchPosition(updateLocation, handleError, {
+                enableHighAccuracy: true,
+                maximumAge: 0
+            });
+        } else {
+            document.getElementById("status").textContent = "Geolocation is not supported.";
+        }
+    </script> 
+ 
+</body></html>
