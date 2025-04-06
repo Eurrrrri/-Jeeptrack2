@@ -1,73 +1,158 @@
 <!doctype html>
-<html lang="en"> 
- <head> 
-  <meta charset="UTF-8"> 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-  <title>Jeepney Monitoring System</title> 
-  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js"></script> 
-  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js"></script> 
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC7Y0vwDCa4j-PFSBMO4LMP3iBTE97D5sU&amp;callback=initMap" async defer></script> 
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Business Name - Home</title>
+  <meta name="description" content="Welcome to Business Name. We offer top-quality services tailored to your needs.">
   <style>
-        #map { height: 500px; width: 100%; }
-    </style> 
- </head> 
- <body> 
-  <h1>Jeepney Monitoring System</h1> 
-  <div id="map"></div> 
+    :root {
+      --primary-color: #0d6efd;
+      --text-color: #333;
+      --light-bg: #f1f1f1;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      background-color: white;
+      color: var(--text-color);
+    }
+
+    header {
+      background-color: var(--primary-color);
+      color: white;
+      padding: 20px;
+    }
+
+    header h1 {
+      font-size: 1.8em;
+      margin-bottom: 5px;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 15px;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .menu-toggle {
+      display: none;
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    main {
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    main h2 {
+      margin-bottom: 10px;
+      font-size: 1.5em;
+    }
+
+    main p {
+      margin-bottom: 30px;
+    }
+
+    button {
+      padding: 12px 24px;
+      background-color: var(--primary-color);
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    footer {
+      background-color: var(--light-bg);
+      padding: 20px;
+      text-align: center;
+      font-size: 14px;
+    }
+
+    footer a {
+      color: var(--primary-color);
+      text-decoration: none;
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: var(--primary-color);
+        padding: 10px 0;
+      }
+
+      .nav-links.show {
+        display: flex;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <div>
+        <h1>rEElax Solutions</h1>
+        <p>We make people comfortable.</p>
+      </div>
+      <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+      <div class="nav-links" id="navLinks">
+        <a href="">Home</a>
+        <a href="">About Us</a>
+        <a href="">Services</a>
+        <a href="">Contact</a>
+        <a href="">Privacy Policy</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <h2>Welcome to Our Website</h2>
+    <p>We provide high-quality solutions to help YOU.</p>
+    <button onclick="window.location.href=''">Track Jeepneys!</button>
+  </main>
+
+  <footer>
+    <p>© 2025  rEElax Solutions. All rights reserved.</p>
+    <p>Contact us: <a href="mailto:contact@businessname.com"> reelax.solutions@gmail.com</a> | +63 912 345 6789</p>
+    <p><a href="">Privacy Policy</a> | <a href="">Terms &amp; Conditions</a></p>
+    <p>This site uses cookies to improve your experience. By continuing to browse, you agree to our use of cookies.</p>
+  </footer>
+
   <script>
-        // 🔹 Firebase Configuration (Replace with your own Firebase credentials)
-        const firebaseConfig = {
-            apiKey: "AIzaSyC7Y0vwDCa4j-PFSBMO4LMP3iBTE97D5sU",
-            authDomain: "jeepneytracking1.firebaseapp.com",
-            databaseURL: "https://jeepneytracking1-default-rtdb.asia-southeast1.firebasedatabase.app",
-            projectId: "jeepneytracking1",
-            storageBucket: "jeepneytracking1.firebasestorage.app",
-            messagingSenderId: "999853984026",
-            appId: "1:999853984026:web:0cc9596c18f27b5fd744a3",
-            measurementId: "G-LWM8JJH3KW"
-  };
+    function toggleMenu() {
+      const nav = document.getElementById('navLinks');
+      nav.classList.toggle('show');
+    }
+  </script>
 
-        // 🔹 Initialize Firebase
-       
-        const database = firebase.database();
-        const app = initializeApp(firebaseConfig);
-        const analytics = getAnalytics(app);
-
-        let map;
-        let markers = {}; // Stores markers for each jeepney
-
-        // 🔹 Initialize Google Map
-        function initMap() {
-            map = new google.maps.Map(document.getElementById("map"), {
-                center: { lat: 15.0, lng: 120.0 }, // Default center (Philippines)
-                zoom: 12
-            });
-
-            fetchJeepneyLocations();
-        }
-
-        // 🔹 Fetch jeepney locations from Firebase
-        function fetchJeepneyLocations() {
-            const jeepneysRef = database.ref("jeepneys");
-            
-            jeepneysRef.on("value", (snapshot) => {
-                const jeepneys = snapshot.val();
-                
-                for (const id in jeepneys) {
-                    const { latitude, longitude } = jeepneys[id];
-
-                    if (markers[id]) {
-                        markers[id].setPosition(new google.maps.LatLng(latitude, longitude));
-                    } else {
-                        markers[id] = new google.maps.Marker({
-                            position: { lat: latitude, lng: longitude },
-                            map: map,
-                            title: `Jeepney ${id}`
-                        });
-                    }
-                }
-            });
-        }
-    </script> 
- 
 </body></html>
+    
