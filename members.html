@@ -5,120 +5,121 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
   <title>Google Maps - Multiple Jeepneys</title> 
   <style>
-        #map { height: 500px; width: 100%; }
+    #map { height: 500px; width: 100%; }
 
-   button {
+    button {
       padding: 12px 24px;
-      background-color: var(--primary-color);
+      background-color: #007BFF;
       color: white;
       border: none;
       border-radius: 5px;
       font-size: 16px;
       cursor: pointer;
     }
-   }
-   
   </style> 
  </head> 
  <body> 
   <h2>Jeepney Locations on Google Maps</h2> 
-  <div id="map"></div> <!-- Google Maps API --> 
+  <div id="map"></div> 
+
+  <!-- Standalone Button (Optional) -->
   <button onclick="window.location.href='index.html'">Track Jeepneys!</button>
-  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDjEkI9duxMBLHWzrZeAmkWP8IlQCyLPmE&amp;callback=initMap"></script> <!-- Firebase Integration --> 
+
+  <!-- Google Maps API --> 
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDjEkI9duxMBLHWzrZeAmkWP8IlQCyLPmE&amp;callback=initMap"></script> 
+
+  <!-- Firebase Integration --> 
   <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
-        import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js";
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
+    import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js";
 
-        // 🔹 Firebase Config (Use your own)
-        const firebaseConfig = {
-            apiKey: "AIzaSyC7Y0vwDCa4j-PFSBMO4LMP3iBTE97D5sU",
-            authDomain: "jeepneytracking1.firebaseapp.com",
-            databaseURL: "https://jeepneytracking1-default-rtdb.asia-southeast1.firebasedatabase.app",
-            projectId: "jeepneytracking1",
-            storageBucket: "jeepneytracking1.firebasestorage.app",
-            messagingSenderId: "999853984026",
-            appId: "1:999853984026:web:0cc9596c18f27b5fd744a3",
-            measurementId: "G-LWM8JJH3KW"
-        };
+    const firebaseConfig = {
+      apiKey: "AIzaSyC7Y0vwDCa4j-PFSBMO4LMP3iBTE97D5sU",
+      authDomain: "jeepneytracking1.firebaseapp.com",
+      databaseURL: "https://jeepneytracking1-default-rtdb.asia-southeast1.firebasedatabase.app",
+      projectId: "jeepneytracking1",
+      storageBucket: "jeepneytracking1.firebasestorage.app",
+      messagingSenderId: "999853984026",
+      appId: "1:999853984026:web:0cc9596c18f27b5fd744a3",
+      measurementId: "G-LWM8JJH3KW"
+    };
 
-        // 🔹 Initialize Firebase
-        const app = initializeApp(firebaseConfig);
-        const database = getDatabase(app);
+    const app = initializeApp(firebaseConfig);
+    const database = getDatabase(app);
 
-        // 🔹 References for each jeepney
-        const jeepneysRef = {
-            "jeepney1": ref(database, "jeepneys/jeepney1"),
-            "jeepney2": ref(database, "jeepneys/jeepney2"),
-            "jeepney3": ref(database, "jeepneys/jeepney3"),
-            "jeepney4": ref(database, "jeepneys/jeepney4"),
-            "jeepney5": ref(database, "jeepneys/jeepney5"),
-            "jeepney6": ref(database, "jeepneys/jeepney6"),
-            "jeepney7": ref(database, "jeepneys/jeepney7")
-        };
+    const jeepneysRef = {
+      "jeepney1": ref(database, "jeepneys/jeepney1"),
+      "jeepney2": ref(database, "jeepneys/jeepney2"),
+      "jeepney3": ref(database, "jeepneys/jeepney3"),
+      "jeepney4": ref(database, "jeepneys/jeepney4"),
+      "jeepney5": ref(database, "jeepneys/jeepney5"),
+      "jeepney6": ref(database, "jeepneys/jeepney6"),
+      "jeepney7": ref(database, "jeepneys/jeepney7")
+    };
 
-        // 🔹 Update UI & Markers on Firebase Change
-        function updateJeepneyData(jeepneyKey, data) {
-            if (data) {
-                const { latitude, longitude } = data;
-                
-                // 🔹 Update marker position
-                if (window.markers[jeepneyKey]) {
-                    const newPos = new google.maps.LatLng(latitude, longitude);
-                    window.markers[jeepneyKey].setPosition(newPos);
-                }
-            } else {
-                console.error(`No valid data for ${jeepneyKey}`);
-            }
+    function updateJeepneyData(jeepneyKey, data) {
+      if (data) {
+        const { latitude, longitude } = data;
+
+        if (window.markers[jeepneyKey]) {
+          const newPos = new google.maps.LatLng(latitude, longitude);
+          window.markers[jeepneyKey].setPosition(newPos);
         }
+      } else {
+        console.error(`No valid data for ${jeepneyKey}`);
+      }
+    }
 
-        // 🔹 Listen for Firebase Updates
-        for (const key in jeepneysRef) {
-            onValue(jeepneysRef[key], (snapshot) => updateJeepneyData(key, snapshot.val()));
-        }
-    </script> 
+    for (const key in jeepneysRef) {
+      onValue(jeepneysRef[key], (snapshot) => updateJeepneyData(key, snapshot.val()));
+    }
+  </script> 
+
   <script>
-        let map;
-        let infoWindow;
-        window.markers = {}; // Store jeepney markers
+    let map;
+    let infoWindow;
+    window.markers = {}; // Store jeepney markers
 
-        function initMap() {
-            map = new google.maps.Map(document.getElementById("map"), {
-                zoom: 12,
-                center: { lat: 15.179446, lng: 120.04668 }
-            });
+    function initMap() {
+      map = new google.maps.Map(document.getElementById("map"), {
+        zoom: 12,
+        center: { lat: 15.179446, lng: 120.04668 }
+      });
 
-            // 🔹 Create a single InfoWindow instance
-            infoWindow = new google.maps.InfoWindow();
+      infoWindow = new google.maps.InfoWindow();
 
-            // 🔹 Jeepney Data (Initial Positions)
-            const jeepneyData = {
-                "jeepney1": { lat: 15.179446, lng: 120.04668, title: "Allejos" },
-                "jeepney2": { lat: 15.1805, lng: 120.0446, title: "Barrion" },
-                "jeepney3": { lat: 15.15888, lng: 120.0554, title: "Canona" },
-                "jeepney4": { lat: 15.17, lng: 120.0446, title: " Deboma" },
-                "jeepney5": { lat: 15.18, lng: 120.0446, title: "Dolojan" },
-                "jeepney6": { lat: 15.19, lng: 120.0446, title: "Ora" },
-                "jeepney7": { lat: 15.20, lng: 120.0446, title: "Salazar" }
-            };
+      const jeepneyData = {
+        "jeepney1": { lat: 15.179446, lng: 120.04668, title: "Allejos" },
+        "jeepney2": { lat: 15.1805, lng: 120.0446, title: "Barrion" },
+        "jeepney3": { lat: 15.15888, lng: 120.0554, title: "Canona" },
+        "jeepney4": { lat: 15.17, lng: 120.0446, title: "Deboma" },
+        "jeepney5": { lat: 15.18, lng: 120.0446, title: "Dolojan" },
+        "jeepney6": { lat: 15.19, lng: 120.0446, title: "Ora" },
+        "jeepney7": { lat: 15.20, lng: 120.0446, title: "Salazar" }
+      };
 
-            // 🔹 Create markers and add click event for info window
-            for (const [key, data] of Object.entries(jeepneyData)) {
-                const marker = new google.maps.Marker({
-                    position: { lat: data.lat, lng: data.lng },
-                    map: map,
-                    title: data.title
-                });
+      for (const [key, data] of Object.entries(jeepneyData)) {
+        const marker = new google.maps.Marker({
+          position: { lat: data.lat, lng: data.lng },
+          map: map,
+          title: data.title
+        });
 
-                // Store marker reference
-                window.markers[key] = marker;
+        window.markers[key] = marker;
 
-                // 🔹 Add click event to show InfoWindow
-                marker.addListener("click", () => {
-                    infoWindow.setContent(`<strong>${data.title}</strong><br>Latitude: ${data.lat}<br>Longitude: ${data.lng}`);
-                    infoWindow.open(map, marker);
-                });
-            }
-        }
-    </script> 
- 
+        marker.addListener("click", () => {
+          infoWindow.setContent(`
+            <div>
+              <strong>${data.title}</strong><br>
+              Latitude: ${data.lat}<br>
+              Longitude: ${data.lng}<br><br>
+              <button onclick="window.location.href='index.html'">Go to Index</button>
+            </div>
+          `);
+          infoWindow.open(map, marker);
+        });
+      }
+    }
+  </script> 
+
 </body></html>
