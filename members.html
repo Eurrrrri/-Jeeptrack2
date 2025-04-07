@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en"> 
- <head> 
+<head> 
   <meta charset="UTF-8"> 
   <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
   <title>Google Maps - Multiple Jeepneys</title> 
@@ -8,22 +8,23 @@
     #map { height: 500px; width: 100%; }
 
     button {
-      padding: 12px 24px;
+      padding: 10px 20px;
       background-color: #007BFF;
       color: white;
       border: none;
-      border-radius: 5px;
-      font-size: 16px;
+      border-radius: 6px;
+      font-size: 14px;
       cursor: pointer;
+      margin-top: 10px;
     }
   </style> 
- </head> 
- <body> 
+</head> 
+<body> 
   <h2>Jeepney Locations on Google Maps</h2> 
   <div id="map"></div> 
 
   <!-- Standalone Button (Optional) -->
-  <button onclick="window.location.href='index.html'">Back to Home!</button>
+  <button onclick="window.location.href='index.html'">Back to Index</button>
 
   <!-- Google Maps API --> 
   <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDjEkI9duxMBLHWzrZeAmkWP8IlQCyLPmE&amp;callback=initMap"></script> 
@@ -38,10 +39,9 @@
       authDomain: "jeepneytracking1.firebaseapp.com",
       databaseURL: "https://jeepneytracking1-default-rtdb.asia-southeast1.firebasedatabase.app",
       projectId: "jeepneytracking1",
-      storageBucket: "jeepneytracking1.firebasestorage.app",
+      storageBucket: "jeepneytracking1.appspot.com",
       messagingSenderId: "999853984026",
-      appId: "1:999853984026:web:0cc9596c18f27b5fd744a3",
-      measurementId: "G-LWM8JJH3KW"
+      appId: "1:999853984026:web:0cc9596c18f27b5fd744a3"
     };
 
     const app = initializeApp(firebaseConfig);
@@ -60,13 +60,10 @@
     function updateJeepneyData(jeepneyKey, data) {
       if (data) {
         const { latitude, longitude } = data;
-
         if (window.markers[jeepneyKey]) {
           const newPos = new google.maps.LatLng(latitude, longitude);
           window.markers[jeepneyKey].setPosition(newPos);
         }
-      } else {
-        console.error(`No valid data for ${jeepneyKey}`);
       }
     }
 
@@ -89,13 +86,13 @@
       infoWindow = new google.maps.InfoWindow();
 
       const jeepneyData = {
-        "jeepney1": { lat: 15.179446, lng: 120.04668, title: "Allejos" },
-        "jeepney2": { lat: 15.1805, lng: 120.0446, title: "Barrion" },
-        "jeepney3": { lat: 15.15888, lng: 120.0554, title: "Canona" },
-        "jeepney4": { lat: 15.17, lng: 120.0446, title: "Deboma" },
-        "jeepney5": { lat: 15.18, lng: 120.0446, title: "Dolojan" },
-        "jeepney6": { lat: 15.19, lng: 120.0446, title: "Ora" },
-        "jeepney7": { lat: 15.20, lng: 120.0446, title: "Salazar" }
+        "jeepney1": { lat: 15.179446, lng: 120.04668, title: "Allejos", link: "jeepney1.html" },
+        "jeepney2": { lat: 15.1805, lng: 120.0446, title: "Barrion", link: "jeepney2.html" },
+        "jeepney3": { lat: 15.15888, lng: 120.0554, title: "Canona", link: "jeepney3.html" },
+        "jeepney4": { lat: 15.17, lng: 120.0446, title: "Deboma", link: "jeepney4.html" },
+        "jeepney5": { lat: 15.18, lng: 120.0446, title: "Dolojan", link: "jeepney5.html" },
+        "jeepney6": { lat: 15.19, lng: 120.0446, title: "Ora", link: "jeepney6.html" },
+        "jeepney7": { lat: 15.20, lng: 120.0446, title: "Salazar", link: "jeepney7.html" }
       };
 
       for (const [key, data] of Object.entries(jeepneyData)) {
@@ -108,14 +105,15 @@
         window.markers[key] = marker;
 
         marker.addListener("click", () => {
-          infoWindow.setContent(`
+          const content = `
             <div>
               <strong>${data.title}</strong><br>
               Latitude: ${data.lat}<br>
               Longitude: ${data.lng}<br><br>
-              <button onclick="window.location.href='index.html'">Go to Index</button>
+              <button onclick="window.location.href='${data.link}'">Go to ${data.title}</button>
             </div>
-          `);
+          `;
+          infoWindow.setContent(content);
           infoWindow.open(map, marker);
         });
       }
