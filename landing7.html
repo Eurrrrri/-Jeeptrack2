@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>rEElax Solutions</title>
+  <meta name="description" content="rEElax Solutions – Making people comfortable through smart technology solutions.">
+
+  <style>
+    /* Color Variables */
+    :root {
+      --primary-teal: #4db6ac;
+      --accent-blue: #5fa8d3;
+      --light-bg: #f0fdfc;
+      --alt-bg: #e0f7fa;
+      --text-color: #2e3d49;
+      --white: #ffffff;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--light-bg);
+      color: var(--text-color);
+      scroll-behavior: smooth;
+    }
+
+    /* Hero Section */
+    .hero {
+      background-color: var(--primary-teal);
+      color: white;
+      text-align: center;
+      padding: 80px 20px 60px;
+    }
+
+    .hero h1 {
+      font-size: 2.5em;
+      margin-bottom: 10px;
+    }
+
+    .hero p {
+      font-size: 1.2em;
+      opacity: 0.95;
+    }
+
+    /* Navigation Bar */
+    nav {
+      position: sticky;
+      top: 0;
+      background-color: var(--white);
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 20px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    }
+
+    nav .logo {
+      font-size: 1.4em;
+      font-weight: bold;
+      color: var(--primary-teal);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-color);
+      font-weight: 500;
+    }
+
+    .menu-toggle {
+      display: none;
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    /* Sections */
+    section {
+      padding: 60px 20px;
+    }
+
+    h2 {
+      font-size: 2em;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    p {
+      max-width: 800px;
+      margin: 0 auto 20px;
+      text-align: center;
+    }
+
+    /* Services Section */
+    #services {
+      background-color: var(--white);
+    }
+
+    .service-cards {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+      margin-top: 30px;
+    }
+
+    .service-card {
+      background-color: var(--alt-bg);
+      border-radius: 10px;
+      padding: 30px;
+      width: 300px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      text-align: center;
+    }
+
+    .service-card h3 {
+      color: var(--primary-teal);
+      margin-bottom: 10px;
+    }
+
+    .cta-button {
+      display: inline-block;
+      background-color: var(--accent-blue);
+      color: white;
+      padding: 12px 24px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: bold;
+      margin-top: 15px;
+      transition: background-color 0.3s ease;
+    }
+
+    .cta-button:hover {
+      background-color: #4a98c3;
+    }
+
+    #about {
+      background-color: var(--alt-bg);
+    }
+
+    #mission {
+      background-color: var(--white);
+    }
+
+    #vision {
+      background-color: var(--alt-bg);
+    }
+
+    #contact {
+      background-color: var(--white);
+    }
+
+    footer {
+      background-color: var(--primary-teal);
+      color: white;
+      text-align: center;
+      padding: 30px 20px;
+      font-size: 14px;
+    }
+
+    footer a {
+      color: white;
+      text-decoration: underline;
+    }
+
+    /* Mobile */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: white;
+        padding: 10px 20px;
+      }
+
+      .nav-links.show {
+        display: flex;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      .service-cards {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Hero Banner -->
+  <section class="hero">
+    <h1>rEElax Solutions</h1>
+    <p><em>Your slogan goes here.</em></p>
+  </section>
+
+  <!-- Sticky Navigation -->
+  <nav>
+    <div class="logo">rEElax</div>
+    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+    <div class="nav-links" id="navLinks">
+      <a href="#services">Services</a>
+      <a href="#about">About</a>
+      <a href="#mission">Mission</a>
+      <a href="#vision">Vision</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+
+  <!-- Services -->
+  <section id="services">
+    <h2>Our Services</h2>
+    <p>rEElax Solutions offers technological solutions that bring ease and comfort to your daily life.</p>
+
+    <div class="service-cards">
+      <div class="service-card">
+        <h3>JeepnEE</h3>
+        <p>An IoT-based jeepney tracking and monitoring system to optimize commuter experience and driver operations.</p>
+        <a class="cta-button" href="members.html">Track Now</a>
+      </div>
+
+      <div class="service-card">
+        <h3>Upcoming Projects</h3>
+        <p>We are working on more services aimed at improving comfort and convenience in public systems and daily living.</p>
+        <a class="cta-button" href="#">Coming Soon</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about">
+    <h2>About Us</h2>
+    <p>rEElax Solutions is a tech-based startup focused on improving everyday experiences through innovative technology. Our mission is grounded in the idea of comfort — whether in transportation, communication, or smart systems.</p>
+    <p>We are committed to designing human-centered services that respond to real needs, with an emphasis on accessibility, reliability, and positive user impact.</p>
+  </section>
+
+  <!-- Mission -->
+  <section id="mission">
+    <h2>Our Mission</h2>
+    <p>To make people comfortable through innovative, accessible, and intelligent technologies that solve real-life problems with ease and efficiency.</p>
+  </section>
+
+  <!-- Vision -->
+  <section id="vision">
+    <h2>Our Vision</h2>
+    <p>To be a trusted leader in delivering smart technologies that elevate the quality of life and redefine convenience in transportation and beyond.</p>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+    <h2>Contact Us</h2>
+    <p>Email: <a href="mailto:reelax.solutions@gmail.com">reelax.solutions@gmail.com</a></p>
+    <p>Phone: +63 912 345 6789</p>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 rEElax Solutions. All rights reserved.</p>
+    <p><a href="#">Privacy Policy</a> | <a href="#">Terms</a></p>
+  </footer>
+
+  <!-- JS: Mobile Nav Toggle -->
+  <script>
+    function toggleMenu() {
+      const nav = document.getElementById('navLinks');
+      nav.classList.toggle('show');
+    }
+  </script>
+
+</body>
+</html>
