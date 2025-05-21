@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>rEElax Solutions</title>
+  <meta name="description" content="rEElax Solutions is a Filipino technology company that develops digital tools to improve commuting and daily life.">
+
+  <style>
+    :root {
+      --primary-color: #0d6efd;
+      --text-color: #333;
+      --light-bg: #f1f1f1;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      background-color: white;
+      color: var(--text-color);
+    }
+
+    header {
+      background-color: var(--primary-color);
+      color: white;
+      padding: 30px 20px;
+      text-align: center;
+    }
+
+    .logo {
+      width: 80px;
+      height: auto;
+      margin-bottom: 10px;
+    }
+
+    header h1 {
+      font-size: 2em;
+    }
+
+    header p {
+      font-size: 1.1em;
+      font-style: italic;
+    }
+
+    section {
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    .about p {
+      max-width: 800px;
+      margin: 10px auto;
+    }
+
+    .mv-section {
+      background-color: var(--light-bg);
+    }
+
+    .mv-section h3 {
+      margin-top: 20px;
+      color: var(--primary-color);
+    }
+
+    .services {
+      background-color: #f9f9f9;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .service-item {
+      background-color: white;
+      border-radius: 8px;
+      padding: 20px;
+      width: 90%;
+      max-width: 350px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .service-item h3 {
+      color: var(--primary-color);
+      margin-bottom: 10px;
+    }
+
+    .service-item button {
+      padding: 10px 20px;
+      background-color: var(--primary-color);
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    footer {
+      background-color: var(--light-bg);
+      padding: 20px;
+      text-align: center;
+      font-size: 14px;
+    }
+
+    footer a {
+      color: var(--primary-color);
+      text-decoration: none;
+    }
+
+    @media (min-width: 700px) {
+      .services {
+        flex-direction: row;
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Hero Section with Logo and Placeholder Slogan -->
+  <header>
+    <!-- Company logo (replace with your actual image path later) -->
+    <img src="logo-placeholder.png" alt="rEElax Solutions Logo" class="logo">
+    <h1>rEElax Solutions</h1>
+    <p>[Insert Company Slogan Here]</p>
+  </header>
+
+  <!-- About Section -->
+  <section class="about">
+    <h2>About Us</h2>
+    <p>rEElax Solutions is a Filipino startup that designs and develops technology-driven systems to solve everyday commuter and mobility issues. We are a group of engineers and innovators committed to making digital services accessible, smart, and simple for everyone.</p>
+    <p>We are currently focused on smart transport solutions and plan to expand into other areas of public service technology soon.</p>
+  </section>
+
+  <!-- Mission & Vision Section -->
+  <section class="mv-section">
+    <h2>Mission & Vision</h2>
+    <div>
+      <h3>Our Mission</h3>
+      <p>To make people comfortable by creating innovative digital tools that address everyday challenges in transportation and beyond.</p>
+
+      <h3>Our Vision</h3>
+      <p>To become a leading Filipino tech company known for building practical, inclusive, and impactful solutions that improve the quality of life in local communities.</p>
+    </div>
+  </section>
+
+  <!-- Services Section with CTA -->
+  <section class="services">
+    <h2>Our Services</h2>
+
+    <!-- First service: JeepnEE -->
+    <div class="service-item">
+      <h3>🚌 JeepnEE</h3>
+      <p>Track jeepney locations and available seats in real-time using this browser-based public transport monitoring system. No app required.</p>
+      <button onclick="window.location.href='members.html'">Track Jeepneys</button>
+    </div>
+
+    <!-- Placeholder for future services -->
+    <div class="service-item">
+      <h3>🚧 Coming Soon</h3>
+      <p>More smart mobility and convenience-focused tools are on the way. Stay tuned!</p>
+      <button disabled>Launching Soon</button>
+    </div>
+  </section>
+
+  <!-- Footer Section -->
+  <footer>
+    <p>© 2025 rEElax Solutions. All rights reserved.</p>
+    <p>Contact: <a href="mailto:reelax.solutions@gmail.com">reelax.solutions@gmail.com</a> | +63 912 345 6789</p>
+    <p><a href="#">Privacy Policy</a> | <a href="#">Terms & Conditions</a></p>
+  </footer>
+
+</body>
+</html>
