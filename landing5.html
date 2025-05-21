@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>rEElax Solutions</title>
+
+  <style>
+    :root {
+      --primary: #0d6efd;
+      --gray-light: #f8f9fa;
+      --gray-medium: #e9ecef;
+      --gray-dark: #dee2e6;
+      --accent: #fef3c7;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      color: #333;
+    }
+
+    /* Hero Banner */
+    header {
+      background-color: white;
+      padding: 50px 20px 40px;
+      text-align: center;
+    }
+
+    .logo {
+      width: 100px;
+      height: auto;
+      margin-bottom: 15px;
+    }
+
+    header h1 {
+      font-size: 2.2rem;
+      font-weight: bold;
+    }
+
+    header p {
+      font-size: 1.1rem;
+      font-style: italic;
+      color: #666;
+    }
+
+    /* Navigation */
+    nav {
+      position: sticky;
+      top: 0;
+      background-color: var(--primary);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 20px;
+      z-index: 1000;
+    }
+
+    .logo-text {
+      color: white;
+      font-size: 1.3rem;
+      font-weight: bold;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .menu-toggle {
+      display: none;
+      font-size: 1.5em;
+      color: white;
+      cursor: pointer;
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: var(--primary);
+      }
+
+      .nav-links.show {
+        display: flex;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+    }
+
+    /* Section Styling */
+    section {
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    #services {
+      background-color: var(--gray-light);
+    }
+
+    #about {
+      background-color: var(--gray-medium);
+    }
+
+    #mission {
+      background-color: var(--accent);
+    }
+
+    #vision {
+      background-color: var(--gray-dark);
+    }
+
+    #contact {
+      background-color: #f1f1f1;
+    }
+
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+
+    .service-item {
+      background-color: white;
+      margin: 20px auto;
+      max-width: 400px;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .service-item h3 {
+      margin-bottom: 10px;
+      color: var(--primary);
+    }
+
+    .service-item button {
+      margin-top: 10px;
+      padding: 10px 20px;
+      background-color: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    section p {
+      max-width: 800px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    footer {
+      padding: 30px 20px;
+      text-align: center;
+      font-size: 14px;
+    }
+
+    footer a {
+      color: var(--primary);
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Hero Banner -->
+  <header>
+    <img src="logo-placeholder.png" alt="Company Logo" class="logo" />
+    <h1>rEElax Solutions</h1>
+    <p>[Insert Company Slogan Here]</p>
+  </header>
+
+  <!-- Navigation Bar -->
+  <nav>
+    <div class="logo-text">rEElax</div>
+    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+    <div class="nav-links" id="navLinks">
+      <a href="#services">Services</a>
+      <a href="#about">About</a>
+      <a href="#mission">Mission</a>
+      <a href="#vision">Vision</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+
+  <!-- Services Section -->
+  <section id="services">
+    <h2>Our Services</h2>
+    <div class="service-item">
+      <h3>🚌 JeepnEE</h3>
+      <p>Track jeepney locations and available seats in real time. No downloads needed—just visit our site!</p>
+      <button onclick="window.location.href='members.html'">Track Jeepneys</button>
+    </div>
+    <div class="service-item">
+      <h3>🔧 More Services Coming Soon</h3>
+      <p>We're expanding soon to offer even more solutions for commuters and beyond.</p>
+      <button disabled>Launching Soon</button>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about">
+    <h2>About Us</h2>
+    <p>rEElax Solutions is a Filipino tech company that builds modern tools to make daily life more comfortable. Our name reflects our goal: to let people relax by using efficient, accessible, and helpful technology. Our pilot service, JeepnEE, helps commuters find real-time jeepney locations and seat availability, reducing stress and wait times.</p>
+    <p>We envision a platform of tools designed around real human needs—from transportation to other everyday services—delivered in ways that are free, intuitive, and mobile-friendly.</p>
+  </section>
+
+  <!-- Mission Section -->
+  <section id="mission">
+    <h2>Our Mission</h2>
+    <p>Make people comfortable by creating innovative digital tools that solve real-world problems in transport and beyond.</p>
+  </section>
+
+  <!-- Vision Section -->
+  <section id="vision">
+    <h2>Our Vision</h2>
+    <p>To be the go-to Filipino tech company for practical, inclusive, and impactful solutions that improve lives across the country.</p>
+  </section>
+
+  <!-- Footer / Contact -->
+  <footer id="contact">
+    <p>© 2025 rEElax Solutions. All rights reserved.</p>
+    <p>Contact: <a href="mailto:reelax.solutions@gmail.com">reelax.solutions@gmail.com</a> | +63 912 345 6789</p>
+    <p><a href="#">Privacy Policy</a> | <a href="#">Terms & Conditions</a></p>
+  </footer>
+
+  <script>
+    // Show/hide nav menu on mobile
+    function toggleMenu() {
+      document.getElementById('navLinks').classList.toggle('show');
+    }
+  </script>
+
+</body>
+</html>
