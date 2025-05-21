@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>rEElax Solutions</title>
+  <meta name="description" content="rEElax Solutions – Making people comfortable through smart technology solutions.">
+
+  <style>
+    /* Color Variables */
+    :root {
+      --primary-blue: #5fa8d3;
+      --accent-teal: #4db6ac;
+      --light-bg: #f5f9fc;
+      --alt-bg: #e0f7fa;
+      --text-color: #2e3d49;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--light-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      scroll-behavior: smooth;
+    }
+
+    /* Hero Section */
+    .hero {
+      background-color: var(--primary-blue);
+      color: white;
+      text-align: center;
+      padding: 80px 20px 60px;
+    }
+
+    .hero h1 {
+      font-size: 2.5em;
+      margin-bottom: 10px;
+    }
+
+    .hero p {
+      font-size: 1.2em;
+      opacity: 0.9;
+    }
+
+    /* Sticky Nav Bar */
+    nav {
+      position: sticky;
+      top: 0;
+      background-color: white;
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 20px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    }
+
+    nav .logo {
+      font-size: 1.4em;
+      font-weight: bold;
+      color: var(--primary-blue);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-color);
+      font-weight: 500;
+    }
+
+    .menu-toggle {
+      display: none;
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    /* Section Styling */
+    section {
+      padding: 60px 20px;
+    }
+
+    #services {
+      background-color: white;
+    }
+
+    #about {
+      background-color: var(--alt-bg);
+    }
+
+    #mission {
+      background-color: white;
+    }
+
+    #vision {
+      background-color: var(--alt-bg);
+    }
+
+    #contact {
+      background-color: white;
+    }
+
+    h2 {
+      font-size: 2em;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    p {
+      max-width: 800px;
+      margin: 0 auto 20px;
+      text-align: center;
+    }
+
+    /* Call to Action Button */
+    .cta-button {
+      display: inline-block;
+      background-color: var(--accent-teal);
+      color: white;
+      padding: 12px 24px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+    }
+
+    .cta-button:hover {
+      background-color: #3da699;
+    }
+
+    footer {
+      background-color: var(--primary-blue);
+      color: white;
+      text-align: center;
+      padding: 30px 20px;
+      font-size: 14px;
+    }
+
+    footer a {
+      color: #ffffff;
+      text-decoration: underline;
+    }
+
+    /* Mobile Responsive */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: white;
+        text-align: left;
+        padding: 10px 20px;
+      }
+
+      .nav-links.show {
+        display: flex;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Hero Banner -->
+  <section class="hero">
+    <h1>rEElax Solutions</h1>
+    <p><em>Our slogan goes here.</em></p>
+  </section>
+
+  <!-- Sticky Navigation -->
+  <nav>
+    <div class="logo">rEElax</div>
+    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+    <div class="nav-links" id="navLinks">
+      <a href="#services">Services</a>
+      <a href="#about">About</a>
+      <a href="#mission">Mission</a>
+      <a href="#vision">Vision</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+
+  <!-- Services -->
+  <section id="services">
+    <h2>Our Services</h2>
+    <p>We develop intelligent solutions to make public transport and other aspects of daily life more comfortable. Our flagship product, <strong>JeepnEE</strong>, is a smart jeepney monitoring system designed for commuters and drivers alike.</p>
+    <p><a class="cta-button" href="members.html">Track Jeepneys</a></p>
+  </section>
+
+  <!-- About -->
+  <section id="about">
+    <h2>About Us</h2>
+    <p>rEElax Solutions is a technology-driven company dedicated to creating solutions that bring comfort, convenience, and peace of mind to people's lives. Our team is composed of forward-thinking engineers and designers committed to innovation and user experience.</p>
+    <p>We envision a future where smart systems are seamlessly integrated into everyday routines — making public transport safer, smarter, and more efficient.</p>
+  </section>
+
+  <!-- Mission -->
+  <section id="mission">
+    <h2>Our Mission</h2>
+    <p>To make people comfortable through innovative, accessible, and intelligent technologies that solve real-life problems with ease and efficiency.</p>
+  </section>
+
+  <!-- Vision -->
+  <section id="vision">
+    <h2>Our Vision</h2>
+    <p>To be a trusted leader in delivering smart technologies that elevate the quality of life and redefine convenience in transportation and beyond.</p>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+    <h2>Contact Us</h2>
+    <p>Email us at <a href="mailto:reelax.solutions@gmail.com">reelax.solutions@gmail.com</a></p>
+    <p>Phone: +63 912 345 6789</p>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 rEElax Solutions. All rights reserved.</p>
+    <p><a href="#">Privacy Policy</a> | <a href="#">Terms & Conditions</a></p>
+    <p>This site uses cookies to improve your experience. By continuing to browse, you agree to our use of cookies.</p>
+  </footer>
+
+  <!-- JavaScript: Toggle for mobile menu -->
+  <script>
+    function toggleMenu() {
+      const nav = document.getElementById('navLinks');
+      nav.classList.toggle('show');
+    }
+  </script>
+
+</body>
+</html>
