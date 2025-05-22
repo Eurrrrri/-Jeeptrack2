@@ -6,12 +6,11 @@
   <title>rEElax Solutions</title>
   <meta name="description" content="rEElax Solutions – Making people comfortable through smart technology solutions.">
   <style>
-    /* Color Variables */
     :root {
       --primary: #26619c; /* Lapis Lazuli */
-      --secondary: #edf1f5; /* Bluish Gray */
-      --accent: #dd6031; /* Flame */
-      --light: #ffffff; /* White */
+      --gray: #b5c2b7;     /* Bluish Gray */
+      --white: #ffffff;
+      --accent: #dd6031;   /* Flame */
       --black: #000f08;
     }
 
@@ -28,7 +27,7 @@
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       color: var(--black);
-      background-color: var(--light);
+      background-color: var(--white);
     }
 
     nav {
@@ -36,7 +35,7 @@
       top: 0;
       left: 0;
       right: 0;
-      background-color: var(--light);
+      background-color: var(--white);
       z-index: 1000;
       display: flex;
       justify-content: space-between;
@@ -92,19 +91,8 @@
       opacity: 0.95;
     }
 
-    .gradient-break {
-      height: 80px;
-      background: linear-gradient(to bottom, var(--primary), var(--secondary));
-    }
-
-    .gradient-break-footer {
-      height: 80px;
-      background: linear-gradient(to bottom, var(--secondary), var(--primary));
-    }
-
     section {
       padding: 60px 20px;
-      transition: background-color 0.5s ease;
     }
 
     h2 {
@@ -120,7 +108,23 @@
     }
 
     #services {
-      background-color: var(--secondary);
+      background-color: var(--gray);
+    }
+
+    #about {
+      background-color: var(--white);
+    }
+
+    #mission {
+      background-color: var(--gray);
+    }
+
+    #vision {
+      background-color: var(--white);
+    }
+
+    #contact {
+      background-color: var(--gray);
     }
 
     .service-cards {
@@ -132,7 +136,7 @@
     }
 
     .service-card {
-      background-color: var(--light);
+      background-color: var(--white);
       border-radius: 10px;
       padding: 30px;
       width: 300px;
@@ -166,20 +170,24 @@
       background-color: #c45027;
     }
 
-    #about {
-      background-color: var(--light);
+    .gradient-fade-gray-white {
+      height: 40px;
+      background: linear-gradient(to bottom, var(--gray), var(--white));
     }
 
-    #mission {
-      background-color: var(--secondary);
+    .gradient-fade-white-gray {
+      height: 40px;
+      background: linear-gradient(to bottom, var(--white), var(--gray));
     }
 
-    #vision {
-      background-color: var(--light);
+    .gradient-fade-primary-gray {
+      height: 40px;
+      background: linear-gradient(to bottom, var(--primary), var(--gray));
     }
 
-    #contact {
-      background-color: var(--secondary);
+    .gradient-fade-gray-primary {
+      height: 40px;
+      background: linear-gradient(to bottom, var(--gray), var(--primary));
     }
 
     footer {
@@ -231,7 +239,7 @@
         top: 60px;
         right: 20px;
         flex-direction: column;
-        background-color: var(--light);
+        background-color: var(--white);
         border: 1px solid #ddd;
         padding: 10px 20px;
         border-radius: 5px;
@@ -272,7 +280,7 @@
     <p><em>Your slogan goes here.</em></p>
   </section>
 
-  <div class="gradient-break"></div>
+  <div class="gradient-fade-primary-gray"></div>
 
   <section id="services">
     <h2>Our Services</h2>
@@ -291,20 +299,28 @@
     </div>
   </section>
 
+  <div class="gradient-fade-gray-white"></div>
+
   <section id="about">
     <h2>About Us</h2>
     <p>rEElax Solutions is a tech-based startup focused on improving everyday experiences through innovative technology. Our mission is grounded in the idea of comfort — whether in transportation, communication, or smart systems.</p>
   </section>
+
+  <div class="gradient-fade-white-gray"></div>
 
   <section id="mission">
     <h2>Our Mission</h2>
     <p>To make people comfortable through innovative, accessible, and intelligent technologies that solve real-life problems with ease and efficiency.</p>
   </section>
 
+  <div class="gradient-fade-gray-white"></div>
+
   <section id="vision">
     <h2>Our Vision</h2>
     <p>To be a trusted leader in delivering smart technologies that elevate the quality of life and redefine convenience in transportation and beyond.</p>
   </section>
+
+  <div class="gradient-fade-white-gray"></div>
 
   <section id="contact">
     <h2>Contact Us</h2>
@@ -312,7 +328,7 @@
     <p>Phone: +63 912 345 6789</p>
   </section>
 
-  <div class="gradient-break-footer"></div>
+  <div class="gradient-fade-gray-primary"></div>
 
   <footer>
     <p>© 2025 rEElax Solutions. All rights reserved.</p>
