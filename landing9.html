@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>rEElax Solutions</title>
+  <meta name="description" content="rEElax Solutions - Making people comfortable through innovative tech services like JeepnEE and more to come.">
+  <style>
+    /* === Color Palette === */
+    :root {
+      --primary-color: #26619c; /* Lapis Lazuli */
+      --secondary-color: #b5c2b7; /* Ash Gray */
+      --accent-color: #dd6031; /* Flame */
+      --light-bg: #f5f5f5; /* White Smoke */
+      --dark-bg: #000f08; /* Night */
+      --text-color: #333;
+      --nav-height: 60px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth; /* Smooth scrolling */
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: white;
+      color: var(--text-color);
+    }
+
+    header {
+      background-color: var(--primary-color);
+      color: white;
+      padding: 40px 20px 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 2em;
+    }
+
+    header p {
+      font-style: italic;
+      font-size: 1.1em;
+    }
+
+    nav {
+      background-color: var(--primary-color);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 15px;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .menu-toggle {
+      display: none;
+      font-size: 24px;
+      cursor: pointer;
+      color: white;
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: var(--primary-color);
+        padding: 10px;
+      }
+
+      .nav-links.show {
+        display: flex;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+    }
+
+    section {
+      padding: 60px 20px;
+    }
+
+    .services {
+      background-color: var(--light-bg);
+      text-align: center;
+    }
+
+    .services h2 {
+      color: var(--primary-color);
+    }
+
+    .services .service-box {
+      margin-top: 30px;
+    }
+
+    .services .service-item {
+      background-color: white;
+      border-left: 5px solid var(--primary-color);
+      padding: 20px;
+      margin: 15px auto;
+      max-width: 600px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      text-align: left;
+    }
+
+    .about, .mission, .vision, .contact {
+      background-color: white;
+    }
+
+    .about h2,
+    .mission h2,
+    .vision h2,
+    .contact h2 {
+      color: var(--primary-color);
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .about p,
+    .mission p,
+    .vision p,
+    .contact p {
+      max-width: 800px;
+      margin: auto;
+      text-align: center;
+      line-height: 1.6;
+    }
+
+    .cta-button {
+      margin-top: 30px;
+      padding: 12px 24px;
+      background-color: var(--accent-color);
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    footer {
+      background-color: var(--dark-bg);
+      color: white;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+    }
+
+    footer a {
+      color: var(--accent-color);
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Hero Section -->
+  <header>
+    <h1>rEElax Solutions</h1>
+    <p><em>Your slogan here</em></p>
+    <p>Mission: Make people comfortable</p>
+  </header>
+
+  <!-- Navigation Bar -->
+  <nav>
+    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+    <div class="nav-links" id="navLinks">
+      <a href="#services">Services</a>
+      <a href="#about">About</a>
+      <a href="#mission">Mission</a>
+      <a href="#vision">Vision</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+
+  <!-- Services Section -->
+  <section class="services" id="services">
+    <h2>Our Services</h2>
+    <div class="service-box">
+      <div class="service-item">
+        <h3>JeepnEE</h3>
+        <p>An IoT-based monitoring system for public utility jeepneys to optimize commuter experience.</p>
+        <button class="cta-button" onclick="window.location.href='members.html'">Track Jeepneys</button>
+      </div>
+      <div class="service-item">
+        <h3>Future Projects</h3>
+        <p>Stay tuned for more innovative solutions that will redefine comfort and efficiency.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="about" id="about">
+    <h2>About Us</h2>
+    <p>rEElax Solutions is a tech startup dedicated to making people comfortable through modern innovations. Starting with JeepnEE, we envision a future where commuting and daily interactions with technology feel effortless and stress-free.</p>
+  </section>
+
+  <!-- Mission Section -->
+  <section class="mission" id="mission">
+    <h2>Our Mission</h2>
+    <p>To make people comfortable by delivering smart, effective, and accessible solutions through technological innovations.</p>
+  </section>
+
+  <!-- Vision Section -->
+  <section class="vision" id="vision">
+    <h2>Our Vision</h2>
+    <p>To become a leading innovator in the field of user-centered technology, creating systems that redefine convenience and efficiency in everyday life.</p>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="contact" id="contact">
+    <h2>Contact Us</h2>
+    <p>Email: <a href="mailto:reelax.solutions@gmail.com">reelax.solutions@gmail.com</a> | Phone: +63 912 345 6789</p>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 rEElax Solutions. All rights reserved.</p>
+    <p><a href="#">Privacy Policy</a> | <a href="#">Terms & Conditions</a></p>
+  </footer>
+
+  <!-- Toggle Navigation JS -->
+  <script>
+    function toggleMenu() {
+      const nav = document.getElementById('navLinks');
+      nav.classList.toggle('show');
+    }
+  </script>
+
+</body>
+</html>
