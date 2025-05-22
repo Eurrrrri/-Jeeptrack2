@@ -7,10 +7,10 @@
   <meta name="description" content="rEElax Solutions – Making people comfortable through smart technology solutions.">
   <style>
     :root {
-      --primary: #26619c;
-      --gray: #dcdcdc; /* Darker gray */
+      --primary: #26619c; /* Lapis Lazuli */
+      --gray: #f5f5f5;     /* White Smoke */
       --white: #ffffff;
-      --accent: #dd6031;
+      --accent: #dd6031;   /* Flame */
       --black: #000f08;
     }
 
@@ -93,7 +93,6 @@
 
     section {
       padding: 60px 20px;
-      transition: background-color 0.5s ease;
     }
 
     h2 {
@@ -108,19 +107,23 @@
       text-align: center;
     }
 
-    .gradient-transition {
-      height: 60px;
-    }
-
-    .gray-to-white {
-      background: linear-gradient(var(--gray), var(--white));
-    }
-
-    .white-to-gray {
-      background: linear-gradient(var(--white), var(--gray));
-    }
-
     #services {
+      background-color: var(--gray);
+    }
+
+    #about {
+      background-color: var(--white);
+    }
+
+    #mission {
+      background-color: var(--gray);
+    }
+
+    #vision {
+      background-color: var(--white);
+    }
+
+    #contact {
       background-color: var(--gray);
     }
 
@@ -167,20 +170,14 @@
       background-color: #c45027;
     }
 
-    #about {
-      background-color: var(--white);
+    .gradient-fade-gray-white {
+      height: 40px;
+      background: linear-gradient(to bottom, var(--gray), var(--white));
     }
 
-    #mission {
-      background-color: var(--gray);
-    }
-
-    #vision {
-      background-color: var(--white);
-    }
-
-    #contact {
-      background-color: var(--gray);
+    .gradient-fade-white-gray {
+      height: 40px;
+      background: linear-gradient(to bottom, var(--white), var(--gray));
     }
 
     footer {
@@ -219,6 +216,10 @@
     @keyframes fadeIn {
       from {opacity: 0; transform: translateY(20px);}
       to {opacity: 1; transform: translateY(0);}
+    }
+
+    section, .service-card {
+      animation: fadeIn 1s ease-in;
     }
 
     @media (max-width: 768px) {
@@ -286,28 +287,28 @@
     </div>
   </section>
 
-  <div class="gradient-transition gray-to-white"></div>
+  <div class="gradient-fade-gray-white"></div>
 
   <section id="about">
     <h2>About Us</h2>
     <p>rEElax Solutions is a tech-based startup focused on improving everyday experiences through innovative technology. Our mission is grounded in the idea of comfort — whether in transportation, communication, or smart systems.</p>
   </section>
 
-  <div class="gradient-transition white-to-gray"></div>
+  <div class="gradient-fade-white-gray"></div>
 
   <section id="mission">
     <h2>Our Mission</h2>
     <p>To make people comfortable through innovative, accessible, and intelligent technologies that solve real-life problems with ease and efficiency.</p>
   </section>
 
-  <div class="gradient-transition gray-to-white"></div>
+  <div class="gradient-fade-gray-white"></div>
 
   <section id="vision">
     <h2>Our Vision</h2>
     <p>To be a trusted leader in delivering smart technologies that elevate the quality of life and redefine convenience in transportation and beyond.</p>
   </section>
 
-  <div class="gradient-transition white-to-gray"></div>
+  <div class="gradient-fade-white-gray"></div>
 
   <section id="contact">
     <h2>Contact Us</h2>
