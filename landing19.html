@@ -8,7 +8,7 @@
   <style>
     :root {
       --primary: #26619c;
-      --light: #f5f5f5;
+      --gray: #dcdcdc; /* Darker gray */
       --white: #ffffff;
       --accent: #dd6031;
       --black: #000f08;
@@ -112,28 +112,16 @@
       height: 60px;
     }
 
-    .lapis-to-light {
-      background: linear-gradient(var(--primary), var(--light));
+    .gray-to-white {
+      background: linear-gradient(var(--gray), var(--white));
     }
 
-    .light-to-white {
-      background: linear-gradient(var(--light), var(--white));
-    }
-
-    .white-to-light {
-      background: linear-gradient(var(--white), var(--light));
-    }
-
-    .light-to-white-reverse {
-      background: linear-gradient(var(--light), var(--white));
-    }
-
-    .white-to-light-reverse {
-      background: linear-gradient(var(--white), var(--light));
+    .white-to-gray {
+      background: linear-gradient(var(--white), var(--gray));
     }
 
     #services {
-      background-color: var(--light);
+      background-color: var(--gray);
     }
 
     .service-cards {
@@ -184,7 +172,7 @@
     }
 
     #mission {
-      background-color: var(--light);
+      background-color: var(--gray);
     }
 
     #vision {
@@ -192,7 +180,7 @@
     }
 
     #contact {
-      background-color: var(--light);
+      background-color: var(--gray);
     }
 
     footer {
@@ -281,8 +269,6 @@
     <p><em>Your slogan goes here.</em></p>
   </section>
 
-  <div class="gradient-transition lapis-to-light"></div>
-
   <section id="services">
     <h2>Our Services</h2>
     <p>rEElax Solutions offers technological solutions that bring ease and comfort to your daily life.</p>
@@ -300,28 +286,28 @@
     </div>
   </section>
 
-  <div class="gradient-transition light-to-white"></div>
+  <div class="gradient-transition gray-to-white"></div>
 
   <section id="about">
     <h2>About Us</h2>
     <p>rEElax Solutions is a tech-based startup focused on improving everyday experiences through innovative technology. Our mission is grounded in the idea of comfort — whether in transportation, communication, or smart systems.</p>
   </section>
 
-  <div class="gradient-transition white-to-light"></div>
+  <div class="gradient-transition white-to-gray"></div>
 
   <section id="mission">
     <h2>Our Mission</h2>
     <p>To make people comfortable through innovative, accessible, and intelligent technologies that solve real-life problems with ease and efficiency.</p>
   </section>
 
-  <div class="gradient-transition light-to-white-reverse"></div>
+  <div class="gradient-transition gray-to-white"></div>
 
   <section id="vision">
     <h2>Our Vision</h2>
     <p>To be a trusted leader in delivering smart technologies that elevate the quality of life and redefine convenience in transportation and beyond.</p>
   </section>
 
-  <div class="gradient-transition white-to-light-reverse"></div>
+  <div class="gradient-transition white-to-gray"></div>
 
   <section id="contact">
     <h2>Contact Us</h2>
