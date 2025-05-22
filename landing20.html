@@ -8,9 +8,9 @@
   <style>
     :root {
       --primary: #26619c; /* Lapis Lazuli */
-      --gray: #edf1f5;     /* Bluish Gray */
+      --gray: #edf1f5;    /* Bluish Gray */
       --white: #ffffff;
-      --accent: #dd6031;   /* Flame */
+      --accent: #dd6031;  /* Flame */
       --black: #000f08;
     }
 
@@ -170,6 +170,9 @@
       background-color: #c45027;
     }
 
+    /* Removed gradient div styles between hero/services and contact/footer */
+
+    /* Kept gradient fades used between other sections */
     .gradient-fade-gray-white {
       height: 40px;
       background: linear-gradient(to bottom, var(--gray), var(--white));
@@ -178,16 +181,6 @@
     .gradient-fade-white-gray {
       height: 40px;
       background: linear-gradient(to bottom, var(--white), var(--gray));
-    }
-
-    .gradient-fade-primary-gray {
-      height: 40px;
-      background: linear-gradient(to bottom, var(--primary), var(--gray));
-    }
-
-    .gradient-fade-gray-primary {
-      height: 40px;
-      background: linear-gradient(to bottom, var(--gray), var(--primary));
     }
 
     footer {
@@ -280,7 +273,7 @@
     <p><em>Your slogan goes here.</em></p>
   </section>
 
-  <div class="gradient-fade-primary-gray"></div>
+  <!-- Gradient between Hero and Services removed -->
 
   <section id="services">
     <h2>Our Services</h2>
@@ -328,7 +321,7 @@
     <p>Phone: +63 912 345 6789</p>
   </section>
 
-  <div class="gradient-fade-gray-primary"></div>
+  <!-- Gradient between Contact and Footer removed -->
 
   <footer>
     <p>© 2025 rEElax Solutions. All rights reserved.</p>
