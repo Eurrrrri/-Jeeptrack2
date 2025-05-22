@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>rEElax Solutions</title>
+  <meta name="description" content="rEElax Solutions - Make people comfortable.">
+  <style>
+    :root {
+      --lapis-lazuli: #26619c;
+      --ash-gray: #b5c2b7;
+      --flame: #dd6031;
+      --white-smoke: #f5f5f5;
+      --night: #000f08;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth; /* Enables smooth scroll */
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: var(--night);
+      background-color: white;
+    }
+
+    /* Hero Banner */
+    .hero {
+      background-color: var(--lapis-lazuli);
+      color: white;
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 2.5em;
+      margin-bottom: 10px;
+    }
+
+    .hero p {
+      font-size: 1.2em;
+      opacity: 0.9;
+    }
+
+    /* Sticky Nav */
+    nav {
+      background-color: var(--white-smoke);
+      padding: 10px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 2px solid var(--ash-gray);
+    }
+
+    nav ul {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      list-style: none;
+      gap: 15px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--night);
+      font-weight: 600;
+    }
+
+    nav a:hover {
+      color: var(--lapis-lazuli);
+    }
+
+    /* Section styles */
+    section {
+      padding: 60px 20px;
+    }
+
+    #services {
+      background-color: var(--white-smoke);
+    }
+
+    #about {
+      background-color: var(--ash-gray);
+    }
+
+    #mission {
+      background-color: var(--white-smoke);
+    }
+
+    #vision {
+      background-color: var(--ash-gray);
+    }
+
+    #contact {
+      background-color: var(--white-smoke);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: var(--lapis-lazuli);
+    }
+
+    .services-container {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .service-box {
+      background-color: white;
+      border: 1px solid var(--ash-gray);
+      border-left: 5px solid var(--flame);
+      padding: 20px;
+      border-radius: 8px;
+    }
+
+    /* Contact */
+    #contact p {
+      text-align: center;
+      margin: 10px 0;
+    }
+
+    footer {
+      background-color: var(--night);
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+
+    footer a {
+      color: var(--flame);
+      text-decoration: none;
+    }
+
+    /* Responsive Nav (hamburger toggle not implemented here) */
+    @media (max-width: 768px) {
+      nav ul {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <header class="hero">
+    <!-- Replace with your logo -->
+    <img src="logo-placeholder.png" alt="Company Logo" style="height: 80px; margin-bottom: 10px;">
+    <h1>rEElax Solutions</h1>
+    <p><em>Your slogan goes here</em></p>
+  </header>
+
+  <!-- STICKY NAV -->
+  <nav>
+    <ul>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#mission">Mission</a></li>
+      <li><a href="#vision">Vision</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <h2>Our Services</h2>
+    <div class="services-container">
+      <div class="service-box">
+        <h3>JeepnEE: Jeepney Monitoring System</h3>
+        <p>An IoT-based system that tracks real-time jeepney locations and seat availability, helping commuters travel smarter.</p>
+        <a href="members.html" style="color: var(--lapis-lazuli); font-weight: bold;">Track Jeepneys &rarr;</a>
+      </div>
+      <div class="service-box">
+        <h3>Future Projects</h3>
+        <p>We are constantly innovating! Watch out for upcoming digital transport and smart living solutions tailored for the Filipino community.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <h2>About rEElax Solutions</h2>
+    <p style="max-width: 700px; margin: auto;">
+      rEElax Solutions is a tech-forward company with a heart for the Filipino commuter. We build sustainable and inclusive technology-driven systems to improve comfort, convenience, and accessibility for everyone. Founded by engineers with a passion for practical innovation, rEElax aims to expand into multiple sectors of digital convenience.
+    </p>
+  </section>
+
+  <!-- MISSION -->
+  <section id="mission">
+    <h2>Our Mission</h2>
+    <p style="max-width: 700px; margin: auto;">
+      To make people comfortable by designing accessible, efficient, and user-friendly technological solutions that empower everyday life.
+    </p>
+  </section>
+
+  <!-- VISION -->
+  <section id="vision">
+    <h2>Our Vision</h2>
+    <p style="max-width: 700px; margin: auto;">
+      To be a leading provider of integrated technology systems that elevate the daily experience of communities across the Philippines and beyond.
+    </p>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <h2>Contact Us</h2>
+    <p>Email: <a href="mailto:reelax.solutions@gmail.com">reelax.solutions@gmail.com</a></p>
+    <p>Phone: +63 912 345 6789</p>
+    <p>Address: Cabangan, Zambales, Philippines</p>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>&copy; 2025 rEElax Solutions. All rights reserved.</p>
+    <p><a href="#">Privacy Policy</a> | <a href="#">Terms & Conditions</a></p>
+  </footer>
+
+</body>
+</html>
