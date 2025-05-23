@@ -8,12 +8,15 @@
 
   <style>
     :root {
-      --primary-color: #26619c;        /* Lapis Lazuli */
-      --accent-color: #dd6031;         /* Flame */
-      --background-light: #edf1f5;     /* Bluish gray */
-      --section-alt: #b5c2b7;          /* Ash Gray */
-      --text-dark: #000f08;            /* Night */
+      --primary-teal: #00897b;
+      --accent-blue: #1565c0;
+      --light-bg: #e0f7fa;
+      --alt-bg: #b2ebf2;
+      --text-color: #1b2a33;
       --white: #ffffff;
+      --light-gray: #f1f1f1;
+      --navbar-bg: #b5c2b7;
+      --navbar-text: #26619c;
     }
 
     * {
@@ -28,49 +31,13 @@
 
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: var(--background-light);
-      color: var(--text-dark);
-    }
-
-    /* Navigation */
-    nav {
-      position: sticky;
-      top: 0;
-      background-color: var(--white);
-      z-index: 1000;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 15px 20px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-    }
-
-    nav .logo {
-      font-size: 1.4em;
-      font-weight: bold;
-      color: var(--primary-color);
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 20px;
-    }
-
-    .nav-links a {
-      text-decoration: none;
-      color: var(--text-dark);
-      font-weight: 500;
-    }
-
-    .menu-toggle {
-      display: none;
-      font-size: 24px;
-      cursor: pointer;
+      background-color: var(--light-bg);
+      color: var(--text-color);
     }
 
     /* Hero */
     .hero {
-      background-color: var(--primary-color);
+      background-color: var(--primary-teal);
       color: white;
       text-align: center;
       padding: 80px 20px 60px;
@@ -84,6 +51,42 @@
     .hero p {
       font-size: 1.2em;
       opacity: 0.95;
+    }
+
+    /* Navigation */
+    nav {
+      position: sticky;
+      top: 0;
+      background-color: var(--navbar-bg);
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 20px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    }
+
+    nav .logo {
+      font-size: 1.4em;
+      font-weight: bold;
+      color: var(--navbar-text);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--navbar-text);
+      font-weight: 500;
+    }
+
+    .menu-toggle {
+      display: none;
+      font-size: 24px;
+      cursor: pointer;
     }
 
     section {
@@ -124,7 +127,7 @@
     }
 
     .service-card {
-      background-color: var(--section-alt);
+      background-color: var(--alt-bg);
       border-radius: 10px;
       padding: 30px;
       width: 300px;
@@ -133,13 +136,13 @@
     }
 
     .service-card h3 {
-      color: var(--primary-color);
+      color: var(--primary-teal);
       margin-bottom: 10px;
     }
 
     .cta-button {
       display: inline-block;
-      background-color: var(--accent-color);
+      background-color: var(--accent-blue);
       color: white;
       padding: 12px 24px;
       border-radius: 5px;
@@ -150,11 +153,11 @@
     }
 
     .cta-button:hover {
-      background-color: #c45125;
+      background-color: #0d47a1;
     }
 
     #about {
-      background-color: var(--background-light);
+      background-color: var(--light-gray);
     }
 
     #mission {
@@ -162,7 +165,7 @@
     }
 
     #vision {
-      background-color: var(--background-light);
+      background-color: var(--light-gray);
     }
 
     #contact {
@@ -170,7 +173,7 @@
     }
 
     footer {
-      background-color: var(--primary-color);
+      background-color: var(--primary-teal);
       color: white;
       text-align: center;
       padding: 30px 20px;
@@ -184,6 +187,11 @@
 
     /* Mobile Nav */
     @media (max-width: 768px) {
+      nav {
+        position: sticky;
+        top: 0;
+      }
+
       .menu-toggle {
         display: block;
       }
@@ -193,13 +201,17 @@
         top: 60px;
         left: 0;
         right: 0;
-        background-color: var(--white);
+        background-color: var(--navbar-bg);
         display: none;
         flex-direction: column;
         gap: 10px;
         padding: 15px 20px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
         z-index: 1001;
+      }
+
+      .nav-links a {
+        color: var(--navbar-text);
       }
 
       .nav-links.show {
