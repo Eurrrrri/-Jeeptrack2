@@ -79,11 +79,18 @@
     }
 
     
-    .menu-toggle {
+  .menu-toggle {
   display: none;
   font-size: 24px;
   cursor: pointer;
-  color: var(--white);
+  color: var(--white); /* Force it to be visible against the navbar */
+  z-index: 1001; /* Ensure it's above the nav menu */
+  transition: color 0.3s ease;
+}
+
+.menu-toggle:hover,
+.menu-toggle:active {
+  color: var(--accent-blue); /* Change color on hover/active */
 }
 
 
