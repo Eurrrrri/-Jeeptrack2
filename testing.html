@@ -6,7 +6,6 @@
   <title>rEElax Solutions</title>
   <meta name="description" content="rEElax Solutions – Making people comfortable through smart technology solutions.">
   <style>
-    /* Color Variables */
     :root {
       --primary-teal: #00897b;
       --accent-blue: #1565c0;
@@ -34,25 +33,33 @@
     }
 
     nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      background-color: var(--accent-blue);
-      z-index: 1000;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 15px 20px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    }
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: var(--primary-teal); /* same as before */
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* added shadow */
+}
 
-    .logo {
-      font-size: 1.4em;
-      font-weight: bold;
-      color: white;
-      cursor: pointer;
-    }
+.logo {
+  font-size: 1.4em;
+  font-weight: bold;
+  color: white; /* changed from --primary-teal to white */
+  cursor: pointer;
+}
+
+.hero {
+  background-color: var(--primary-teal);
+  color: white;
+  text-align: center;
+  padding: 160px 20px 60px; /* increased top padding to separate from nav */
+}
+
 
     .nav-links {
       display: flex;
@@ -60,29 +67,33 @@
     }
 
     .nav-links a {
-      text-decoration: none;
-      color: white;
-      font-weight: 500;
-      transition: color 0.3s ease;
-    }
+  text-decoration: none;
+  color: white; /* Changed to white */
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
 
     .nav-links a:hover {
-      color: var(--light-gray);
+      color: var(--light-bg);
     }
 
-    .menu-toggle {
-      display: none;
-      font-size: 24px;
-      cursor: pointer;
-      color: white;
-    }
+    
+  .menu-toggle {
+  display: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: var(--white); /* Force it to be visible against the navbar */
+  z-index: 1001; /* Ensure it's above the nav menu */
+  transition: color 0.3s ease;
+}
 
-    .hero {
-      background-color: var(--primary-teal);
-      color: white;
-      text-align: center;
-      padding: 140px 20px 60px;
-    }
+.menu-toggle:hover,
+.menu-toggle:active {
+  color: var(--accent-blue); /* Change color on hover/active */
+}
+
+
 
     .hero h1 {
       font-size: 2.5em;
@@ -113,7 +124,7 @@
     }
 
     #services {
-      background-color: var(--light-bg);
+      background-color: var(--white);
     }
 
     .service-cards {
@@ -125,7 +136,7 @@
     }
 
     .service-card {
-      background-color: var(--white);
+      background-color: var(--light-bg);
       border-radius: 10px;
       padding: 30px;
       width: 300px;
@@ -139,7 +150,7 @@
     }
 
     .service-card h3 {
-      color: var(--accent-blue);
+      color: var(--primary-teal);
       margin-bottom: 10px;
     }
 
@@ -156,27 +167,27 @@
     }
 
     .cta-button:hover {
-      background-color: #0e4ca1;
+      background-color: #0d47a1;
     }
 
     #about {
-      background-color: var(--white);
+      background-color: var(--light-gray);
     }
 
     #mission {
-      background-color: var(--light-bg);
+      background-color: var(-- white);
     }
 
     #vision {
-      background-color: var(--white);
+      background-color: var(--light-gray);
     }
 
     #contact {
-      background-color: var(--light-bg);
+      background-color: var(--white);
     }
 
     footer {
-      background-color: var(--accent-blue);
+      background-color: var(--primary-teal);
       color: white;
       text-align: center;
       padding: 30px 20px;
@@ -224,7 +235,7 @@
         top: 60px;
         right: 20px;
         flex-direction: column;
-        background-color: var(--accent-blue);
+        background-color: var(--primary-teal);
         border: 1px solid #ddd;
         padding: 10px 20px;
         border-radius: 5px;
@@ -233,10 +244,6 @@
 
       .nav-links.show {
         display: flex;
-      }
-
-      .nav-links a {
-        color: white;
       }
 
       .menu-toggle {
@@ -266,7 +273,7 @@
 
   <section class="hero">
     <h1>rEElax Solutions</h1>
-    <p><em>Your slogan goes here.</em></p>
+    <p><em> Making people comfortable.</em></p>
   </section>
 
   <section id="services">
