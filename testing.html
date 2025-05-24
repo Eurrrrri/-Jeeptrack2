@@ -9,6 +9,7 @@
     :root {
       --primary-teal: #00897b;
       --accent-blue: #1565c0;
+      --dark-blue: #0d47a1;
       --light-bg: #e0f7fa;
       --alt-bg: #b2ebf2;
       --text-color: #1b2a33;
@@ -33,35 +34,35 @@
     }
 
     nav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  background-color: var(--primary-teal); /* same as before */
-  z-index: 1000;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px 20px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* added shadow */
-}
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background-color: var(--primary-teal);
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 20px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
 
-.logo {
-  font-size: 1.4em;
-  font-weight: bold;
-  color: white; /* changed from --primary-teal to white */
-  cursor: pointer;
-}
+    .logo-container {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+    }
 
+    .logo-img {
+      height: 30px;
+      margin-right: 10px;
+    }
 
-.hero {
-  background: url('hero-bg.jpg') center center / cover no-repeat;
-  color: white;
-  text-align: center;
-  padding: 140px 20px 60px;
-  position: relative;
-}
-
+    .logo-text {
+      font-size: 1.4em;
+      font-weight: bold;
+      color: white;
+    }
 
     .nav-links {
       display: flex;
@@ -69,38 +70,38 @@
     }
 
     .nav-links a {
-  text-decoration: none;
-  color: white; /* Changed to white */
-  font-weight: 500;
-  transition: color 0.3s ease;
-}
-
-
-    .nav-links a:hover {
-      color: var(--light-bg);
+      text-decoration: none;
+      color: white;
+      font-weight: 500;
+      transition: font-weight 0.3s ease;
     }
 
-    
-  .menu-toggle {
-  display: none;
-  font-size: 24px;
-  cursor: pointer;
-  color: var(--white); /* Force it to be visible against the navbar */
-  z-index: 1001; /* Ensure it's above the nav menu */
-  transition: color 0.3s ease;
-}
+    .nav-links a:hover {
+      font-weight: 700;
+    }
 
-.menu-toggle:hover,
-.menu-toggle:active {
-  color: var(--accent-blue); /* Change color on hover/active */
-}
+    .menu-toggle {
+      display: none;
+      font-size: 24px;
+      cursor: pointer;
+      color: var(--white);
+      z-index: 1001;
+      transition: color 0.3s ease;
+    }
 
+    .menu-toggle:hover,
+    .menu-toggle:active {
+      color: var(--accent-blue);
+    }
 
-
-    .hero h1 {
-      font-size: 2.5em;
-      margin-bottom: 10px;
-      animation: fadeIn 1.2s ease;
+    .hero {
+      background-image: url('hero-bg.png');
+      background-position: 75% center;
+      background-size: cover;
+      background-repeat: no-repeat;
+      color: white;
+      text-align: left;
+      padding: 90px 20px 15px;
     }
 
     .hero p {
@@ -169,7 +170,7 @@
     }
 
     .cta-button:hover {
-      background-color: #0d47a1;
+      background-color: var(--dark-blue);
     }
 
     #about {
@@ -177,7 +178,7 @@
     }
 
     #mission {
-      background-color: var(-- white);
+      background-color: var(--white);
     }
 
     #vision {
@@ -217,8 +218,8 @@
       z-index: 999;
     }
 
-    #topBtn:hover {
-      background-color: var(--primary-teal);
+    #topBtn.clicked {
+      background-color: var(--primary-teal) !important;
     }
 
     @keyframes fadeIn {
@@ -262,7 +263,10 @@
 <body>
 
   <nav>
-    <div class="logo" onclick="location.reload()">rEElax</div>
+    <a class="logo-container" href="/">
+      <img src="logo.png" alt="rEElax Logo" class="logo-img" />
+      <span class="logo-text">rEElax Solutions</span>
+    </a>
     <div class="menu-toggle" onclick="toggleMenu()">☰</div>
     <div class="nav-links" id="navLinks">
       <a href="#services">Services</a>
@@ -274,8 +278,7 @@
   </nav>
 
   <section class="hero">
-    <h1>rEElax Solutions</h1>
-    <p><em> Making people comfortable.</em></p>
+    <p><em>Making people comfortable.</em></p>
   </section>
 
   <section id="services">
@@ -285,7 +288,9 @@
       <div class="service-card">
         <h3>JeepnEE</h3>
         <p>An IoT-based jeepney tracking and monitoring system to optimize commuter experience and driver operations.</p>
-        <a class="cta-button" href="members.html">Track Now</a>
+        <a class="cta-button" href="members.html" target="fallbackFrame">Track Now</a>
+        <iframe name="fallbackFrame" style="display:none;" onerror="document.getElementById('fallbackMsg').style.display = 'block';"></iframe>
+        <div id="fallbackMsg" style="display:none; color: red; margin-top: 10px;">Failed to load page. Please try again later.</div>
       </div>
       <div class="service-card">
         <h3>Upcoming Projects</h3>
@@ -329,11 +334,16 @@
     }
 
     function scrollToTop() {
+      const topBtn = document.getElementById("topBtn");
+      topBtn.classList.add('clicked');
       window.scrollTo({ top: 0, behavior: 'smooth' });
+      setTimeout(() => {
+        topBtn.classList.remove('clicked');
+      }, 500);
     }
 
     const topBtn = document.getElementById("topBtn");
-    window.onscroll = function() {
+    window.onscroll = function () {
       topBtn.style.display = window.scrollY > 200 ? "block" : "none";
     };
   </script>
