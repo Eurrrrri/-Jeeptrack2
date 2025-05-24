@@ -14,6 +14,7 @@
       --text-color: #1b2a33;
       --white: #ffffff;
       --light-gray: #f1f1f1;
+      --cta-hover-blue: #0d47a1;
     }
 
     * {
@@ -62,6 +63,7 @@
       font-size: 1.4em;
       font-weight: bold;
       color: white;
+      text-decoration: none;
     }
 
     .nav-links {
@@ -73,11 +75,11 @@
       text-decoration: none;
       color: white;
       font-weight: 500;
-      transition: color 0.3s ease;
+      transition: font-weight 0.2s ease;
     }
 
     .nav-links a:hover {
-      color: var(--light-bg);
+      font-weight: 700;
     }
 
     .menu-toggle {
@@ -91,7 +93,7 @@
 
     .menu-toggle:hover,
     .menu-toggle:active {
-      color: var(--accent-blue);
+      color: var(--cta-hover-blue);
     }
 
     .hero {
@@ -170,7 +172,7 @@
     }
 
     .cta-button:hover {
-      background-color: #0d47a1;
+      background-color: var(--cta-hover-blue);
     }
 
     #about {
@@ -218,7 +220,7 @@
       z-index: 999;
     }
 
-    #topBtn:hover {
+    #topBtn.clicked {
       background-color: var(--primary-teal);
     }
 
@@ -263,8 +265,8 @@
 <body>
 
   <nav>
-    <a href="index.html" class="logo-container">
-      <img src="logo.png" alt="rEElax Logo" class="logo-img" />
+    <a href="#" class="logo-container">
+      <img src="logo-white.png" alt="rEElax Logo" class="logo-img" />
       <span class="logo-text">rEElax Solutions</span>
     </a>
     <div class="menu-toggle" onclick="toggleMenu()">☰</div>
@@ -288,8 +290,7 @@
       <div class="service-card">
         <h3>JeepnEE</h3>
         <p>An IoT-based jeepney tracking and monitoring system to optimize commuter experience and driver operations.</p>
-        <p><strong>Unable to access live tracking at the moment.</strong> Please try again later or contact support for assistance.</p>
-        <a class="cta-button" href="members.html">Track Now</a>
+        <a class="cta-button" href="members.html" onerror="this.outerHTML='<p>Tracking temporarily unavailable. Please try again later.</p>'">Track Now</a>
       </div>
       <div class="service-card">
         <h3>Upcoming Projects</h3>
@@ -333,7 +334,10 @@
     }
 
     function scrollToTop() {
+      const btn = document.getElementById("topBtn");
+      btn.classList.add("clicked");
       window.scrollTo({ top: 0, behavior: 'smooth' });
+      setTimeout(() => btn.classList.remove("clicked"), 500);
     }
 
     const topBtn = document.getElementById("topBtn");
