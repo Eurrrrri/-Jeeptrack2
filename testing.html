@@ -9,12 +9,12 @@
     :root {
       --primary-teal: #00897b;
       --accent-blue: #1565c0;
-      --dark-blue: #0d47a1;
       --light-bg: #e0f7fa;
       --alt-bg: #b2ebf2;
       --text-color: #1b2a33;
       --white: #ffffff;
       --light-gray: #f1f1f1;
+      --cta-hover-blue: #0d47a1;
     }
 
     * {
@@ -51,6 +51,7 @@
       display: flex;
       align-items: center;
       cursor: pointer;
+      text-decoration: none;
     }
 
     .logo-img {
@@ -62,6 +63,7 @@
       font-size: 1.4em;
       font-weight: bold;
       color: white;
+      text-decoration: none;
     }
 
     .nav-links {
@@ -73,7 +75,7 @@
       text-decoration: none;
       color: white;
       font-weight: 500;
-      transition: font-weight 0.3s ease;
+      transition: font-weight 0.2s ease;
     }
 
     .nav-links a:hover {
@@ -91,7 +93,7 @@
 
     .menu-toggle:hover,
     .menu-toggle:active {
-      color: var(--accent-blue);
+      color: var(--cta-hover-blue);
     }
 
     .hero {
@@ -170,7 +172,7 @@
     }
 
     .cta-button:hover {
-      background-color: var(--dark-blue);
+      background-color: var(--cta-hover-blue);
     }
 
     #about {
@@ -219,7 +221,7 @@
     }
 
     #topBtn.clicked {
-      background-color: var(--primary-teal) !important;
+      background-color: var(--primary-teal);
     }
 
     @keyframes fadeIn {
@@ -263,7 +265,7 @@
 <body>
 
   <nav>
-    <a class="logo-container" href="/">
+    <a href="#" class="logo-container">
       <img src="logo-white.png" alt="rEElax Logo" class="logo-img" />
       <span class="logo-text">rEElax Solutions</span>
     </a>
@@ -288,9 +290,7 @@
       <div class="service-card">
         <h3>JeepnEE</h3>
         <p>An IoT-based jeepney tracking and monitoring system to optimize commuter experience and driver operations.</p>
-        <a class="cta-button" href="members.html" target="fallbackFrame">Track Now</a>
-        <iframe name="fallbackFrame" style="display:none;" onerror="document.getElementById('fallbackMsg').style.display = 'block';"></iframe>
-        <div id="fallbackMsg" style="display:none; color: red; margin-top: 10px;">Failed to load page. Please try again later.</div>
+        <a class="cta-button" href="members.html" onerror="this.outerHTML='<p>Tracking temporarily unavailable. Please try again later.</p>'">Track Now</a>
       </div>
       <div class="service-card">
         <h3>Upcoming Projects</h3>
@@ -334,16 +334,14 @@
     }
 
     function scrollToTop() {
-      const topBtn = document.getElementById("topBtn");
-      topBtn.classList.add('clicked');
+      const btn = document.getElementById("topBtn");
+      btn.classList.add("clicked");
       window.scrollTo({ top: 0, behavior: 'smooth' });
-      setTimeout(() => {
-        topBtn.classList.remove('clicked');
-      }, 500);
+      setTimeout(() => btn.classList.remove("clicked"), 500);
     }
 
     const topBtn = document.getElementById("topBtn");
-    window.onscroll = function () {
+    window.onscroll = function() {
       topBtn.style.display = window.scrollY > 200 ? "block" : "none";
     };
   </script>
