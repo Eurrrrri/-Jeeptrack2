@@ -75,18 +75,20 @@
       text-decoration: none;
       color: white;
       font-weight: 500;
-      transition: font-weight 0.2s ease;
+      padding: 5px 10px;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
     }
 
     .nav-links a:hover {
-      font-weight: 700;
+      background-color: #004d40; /* dark teal or any dark background you prefer */
     }
 
     .menu-toggle {
       display: none;
       font-size: 24px;
       cursor: pointer;
-      color: var(--white);
+      color: white;
       z-index: 1001;
       transition: color 0.3s ease;
     }
@@ -97,14 +99,19 @@
     }
 
     .hero {
-      background-image: url('hero-bg.png');
-      background-position: 75% center;
-      background-size: cover;
-      background-repeat: no-repeat;
-      color: white;
-      text-align: left;
-      padding: 90px 20px 15px;
-    }
+  background-image: url('hero-bg.png');
+  background-position: 75% center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px; /* Increase this value as needed */
+  padding: 90px 20px 15px;
+  flex-direction: column;
+}
+
 
     .hero p {
       font-size: 1.2em;
@@ -120,6 +127,11 @@
       font-size: 2em;
       margin-bottom: 20px;
       text-align: center;
+    }
+
+    h1 {
+      font-size: 2.5em;
+      ttext-align: left;
     }
 
     p {
@@ -280,7 +292,7 @@
   </nav>
 
   <section class="hero">
-    <p><em>Making people comfortable.</em></p>
+    <h1><em>Making<br>people<br>comfortable.</em></h1>
   </section>
 
   <section id="services">
