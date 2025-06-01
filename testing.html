@@ -2,173 +2,146 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Jeepney Map | rEElax Solutions</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" />
   <style>
     :root {
-      --lapis: #26619c;
-      --ash: #b5c2b7;
-      --flame: #dd6031;
-      --white-smoke: #f0f4f8;
-      --night: #000f08;
-      --hover-blue: #0d47a1;
-      --bluish-gray: #e3e8ee;
+      --primary-teal: #4db6ac;
+      --accent-blue: #5fa8d3;
+      --light-bg: #f0fdfc;
+      --alt-bg: #e0f7fa;
+      --text-color: #2e3d49;
+      --white: #ffffff;
+      --light-gray: #f1f1f1;
+      --cta-hover-blue: #0d47a1;
     }
 
     body {
       margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background-color: var(--bluish-gray);
-      color: var(--night);
+      font-family: 'Montserrat', sans-serif;
+      background-color: var(--light-bg);
+      color: var(--text-color);
     }
 
-    /* NAVIGATION BAR (from landing page) */
-    nav {
+    /* Navigation Bar */
+    header {
       position: fixed;
       top: 0;
       width: 100%;
-      background-color: var(--ash);
-      color: var(--lapis);
+      background-color: var(--primary-teal);
+      color: var(--white);
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 0.75rem 1.5rem;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-      z-index: 999;
+      padding: 12px 24px;
+      z-index: 1000;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     }
 
-    nav .logo {
-      font-size: 1.5rem;
-      font-weight: bold;
-      color: var(--lapis);
+    header img.logo {
+      height: 36px;
     }
 
     nav ul {
       list-style: none;
       display: flex;
-      gap: 1rem;
+      gap: 20px;
       margin: 0;
       padding: 0;
     }
 
-    nav ul li a {
+    nav a {
+      color: var(--white);
       text-decoration: none;
-      color: var(--lapis);
-      font-weight: 500;
-      transition: color 0.3s ease;
+      font-weight: 600;
+      transition: color 0.3s;
     }
 
-    nav ul li a:hover {
-      color: var(--hover-blue);
+    nav a:hover {
+      color: var(--cta-hover-blue);
     }
 
-    /* Hero */
-    .hero {
-      padding: 100px 20px 40px; /* space under fixed nav */
-      background: linear-gradient(to bottom, var(--ash), var(--white-smoke));
-      text-align: center;
-    }
-
-    .hero h1 {
-      font-size: 2.4rem;
-      margin-bottom: 10px;
-      color: var(--lapis);
-    }
-
-    .hero p {
-      font-size: 1rem;
-      color: var(--night);
+    main {
+      padding-top: 80px;
     }
 
     #map {
-      height: 500px;
       width: 100%;
+      height: 500px;
+      border: none;
     }
 
-    /* Button */
-    .btn {
-      margin: 20px auto;
+    .map-section {
+      padding: 40px 20px;
+      background-color: var(--alt-bg);
+    }
+
+    .map-heading {
+      text-align: center;
+      font-size: 1.8rem;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    .back-button {
       display: block;
-      padding: 10px 20px;
-      background-color: var(--lapis);
-      color: white;
+      margin: 20px auto 0;
+      padding: 10px 24px;
+      background-color: var(--accent-blue);
+      color: var(--white);
       border: none;
       border-radius: 6px;
       font-size: 14px;
       cursor: pointer;
-      transition: background-color 0.3s ease;
+      transition: background-color 0.3s;
     }
 
-    .btn:hover {
-      background-color: var(--hover-blue);
+    .back-button:hover {
+      background-color: var(--cta-hover-blue);
     }
 
-    /* Legend */
-    .legend {
+    footer {
+      background-color: var(--primary-teal);
+      color: var(--white);
       text-align: center;
-      margin: 20px;
-      font-size: 14px;
-      background-color: var(--white-smoke);
-      padding: 10px;
-      border-radius: 6px;
-      box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-    }
-
-    .legend span {
-      display: inline-block;
-      margin: 0 10px;
-    }
-
-    .white-icon, .logo-icon {
-      display: inline-block;
-      width: 16px;
-      height: 16px;
-      vertical-align: middle;
-      border-radius: 50%;
-      margin-right: 5px;
-    }
-
-    .white-icon {
-      background-color: white;
-      border: 1px solid #000;
-    }
-
-    .logo-icon {
-      background-image: url('logo-white.png');
-      background-size: contain;
-      background-repeat: no-repeat;
-      background-position: center;
+      padding: 20px;
+      margin-top: 40px;
     }
   </style>
 </head>
 <body>
+  <!-- Navbar -->
+  <header>
+    <img src="logo-white.png" alt="rEElax Logo" class="logo" />
+    <nav>
+      <ul>
+        <li><a href="index.html#home">Home</a></li>
+        <li><a href="index.html#services">Services</a></li>
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
 
-  <!-- NAVBAR (from landing page) -->
-  <nav>
-    <div class="logo">rEElax Solutions</div>
-    <ul>
-      <li><a href="index.html">Home</a></li>
-    </ul>
-  </nav>
+  <!-- Main Content -->
+  <main>
+    <section class="map-section">
+      <h2 class="map-heading">Jeepney Locations</h2>
+      <div id="map"></div>
+      <button class="back-button" onclick="window.location.href='index.html'">Back to Home</button>
+    </section>
+  </main>
 
-  <section class="hero">
-    <h1>Live Jeepney Tracker</h1>
-    <p>View real-time locations of public utility jeepneys in your area.</p>
-  </section>
-
-  <div id="map"></div>
-
-  <button class="btn" onclick="window.location.href='index.html'">Back to Index</button>
-
-  <div class="legend">
-    <span><div class="white-icon"></div> White Jeepney Marker</span>
-    <span><div class="logo-icon"></div> rEElax Logo Marker</span>
-  </div>
+  <!-- Footer -->
+  <footer>
+    &copy; 2025 rEElax Solutions. All rights reserved.
+  </footer>
 
   <!-- Google Maps API -->
-  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDjEkI9duxMBLHWzrZeAmkWP8IlQCyLPmE&callback=initMap"></script>
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap"></script>
 
-  <!-- Firebase Integration -->
+  <!-- Firebase + Marker Setup -->
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
     import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js";
@@ -211,6 +184,7 @@
     }
   </script>
 
+  <!-- Map Init and Markers -->
   <script>
     let map;
     let infoWindow;
@@ -224,14 +198,24 @@
 
       infoWindow = new google.maps.InfoWindow();
 
+      const iconWhite = {
+        url: "https://maps.google.com/mapfiles/ms/icons/white-dot.png",
+        scaledSize: new google.maps.Size(32, 32)
+      };
+
+      const iconLogo = {
+        url: "logo-white.png", // Your rEElax logo path
+        scaledSize: new google.maps.Size(32, 32)
+      };
+
       const jeepneyData = {
-        "jeepney1": { lat: 15.179446, lng: 120.04668, title: "Allejos", link: "jeepney1.html", icon: "white" },
-        "jeepney2": { lat: 15.1805, lng: 120.0446, title: "Barrion", link: "jeepney2.html", icon: "logo" },
-        "jeepney3": { lat: 15.15888, lng: 120.0554, title: "Canona", link: "jeepney3.html", icon: "white" },
-        "jeepney4": { lat: 15.17, lng: 120.0446, title: "Deboma", link: "jeepney4.html", icon: "logo" },
-        "jeepney5": { lat: 15.18, lng: 120.0446, title: "Dolojan", link: "jeepney5.html", icon: "white" },
-        "jeepney6": { lat: 15.19, lng: 120.0446, title: "Ora", link: "jeepney6.html", icon: "logo" },
-        "jeepney7": { lat: 15.20, lng: 120.0446, title: "Salazar", link: "jeepney7.html", icon: "white" }
+        "jeepney1": { lat: 15.179446, lng: 120.04668, title: "Allejos", link: "jeepney1.html", icon: iconWhite },
+        "jeepney2": { lat: 15.1805, lng: 120.0446, title: "Barrion", link: "jeepney2.html", icon: iconLogo },
+        "jeepney3": { lat: 15.15888, lng: 120.0554, title: "Canona", link: "jeepney3.html", icon: iconWhite },
+        "jeepney4": { lat: 15.17, lng: 120.0446, title: "Deboma", link: "jeepney4.html", icon: iconLogo },
+        "jeepney5": { lat: 15.18, lng: 120.0446, title: "Dolojan", link: "jeepney5.html", icon: iconWhite },
+        "jeepney6": { lat: 15.19, lng: 120.0446, title: "Ora", link: "jeepney6.html", icon: iconWhite },
+        "jeepney7": { lat: 15.20, lng: 120.0446, title: "Salazar", link: "jeepney7.html", icon: iconWhite }
       };
 
       for (const [key, data] of Object.entries(jeepneyData)) {
@@ -239,16 +223,7 @@
           position: { lat: data.lat, lng: data.lng },
           map: map,
           title: data.title,
-          icon: data.icon === "white"
-            ? {
-                path: google.maps.SymbolPath.CIRCLE,
-                fillColor: "#ffffff",
-                fillOpacity: 1,
-                strokeColor: "#000000",
-                strokeWeight: 1,
-                scale: 6
-              }
-            : "logo-white.png"
+          icon: data.icon
         });
 
         window.markers[key] = marker;
