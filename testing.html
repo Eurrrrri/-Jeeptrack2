@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Jeepney Map | rEElax Solutions</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap"/>
   <style>
     :root {
       --primary-teal: #4db6ac;
@@ -24,23 +24,33 @@
       color: var(--text-color);
     }
 
-    /* Navigation Bar */
     header {
       position: fixed;
       top: 0;
       width: 100%;
       background-color: var(--primary-teal);
       color: var(--white);
+      padding: 10px 24px;
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      padding: 12px 24px;
+      justify-content: space-between;
       z-index: 1000;
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     }
 
-    header img.logo {
+    .nav-left {
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-left img.logo {
       height: 36px;
+      margin-right: 10px;
+    }
+
+    .nav-left span {
+      font-weight: 600;
+      font-size: 1.1rem;
     }
 
     nav ul {
@@ -66,27 +76,33 @@
       padding-top: 80px;
     }
 
+    .map-section {
+      padding: 60px 20px 40px;
+      background-color: var(--alt-bg);
+      text-align: center;
+    }
+
+    .map-heading {
+      font-size: 2rem;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .map-description {
+      font-size: 1rem;
+      color: var(--text-color);
+      margin-bottom: 30px;
+    }
+
     #map {
       width: 100%;
       height: 500px;
       border: none;
-    }
-
-    .map-section {
-      padding: 40px 20px;
-      background-color: var(--alt-bg);
-    }
-
-    .map-heading {
-      text-align: center;
-      font-size: 1.8rem;
-      font-weight: bold;
+      border-radius: 8px;
       margin-bottom: 20px;
     }
 
     .back-button {
-      display: block;
-      margin: 20px auto 0;
       padding: 10px 24px;
       background-color: var(--accent-blue);
       color: var(--white);
@@ -113,7 +129,10 @@
 <body>
   <!-- Navbar -->
   <header>
-    <img src="logo-white.png" alt="rEElax Logo" class="logo" />
+    <div class="nav-left">
+      <img src="logo-white.png" alt="rEElax Logo" class="logo" />
+      <span>rEElax Solutions</span>
+    </div>
     <nav>
       <ul>
         <li><a href="index.html#home">Home</a></li>
@@ -124,10 +143,11 @@
     </nav>
   </header>
 
-  <!-- Main Content -->
+  <!-- Main -->
   <main>
     <section class="map-section">
       <h2 class="map-heading">Jeepney Locations</h2>
+      <p class="map-description">Track the real-time locations of our partner jeepneys as they travel around Zambales.</p>
       <div id="map"></div>
       <button class="back-button" onclick="window.location.href='index.html'">Back to Home</button>
     </section>
@@ -138,10 +158,10 @@
     &copy; 2025 rEElax Solutions. All rights reserved.
   </footer>
 
-  <!-- Google Maps API -->
-  <script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap"></script>
+  <!-- Google Maps API with your key -->
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC7Y0vwDCa4j-PFSBMO4LMP3iBTE97D5sU&callback=initMap"></script>
 
-  <!-- Firebase + Marker Setup -->
+  <!-- Firebase + Map Marker Script -->
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
     import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js";
@@ -184,7 +204,7 @@
     }
   </script>
 
-  <!-- Map Init and Markers -->
+  <!-- Map Initialization -->
   <script>
     let map;
     let infoWindow;
@@ -204,7 +224,7 @@
       };
 
       const iconLogo = {
-        url: "logo-white.png", // Your rEElax logo path
+        url: "logo-white.png",
         scaledSize: new google.maps.Size(32, 32)
       };
 
